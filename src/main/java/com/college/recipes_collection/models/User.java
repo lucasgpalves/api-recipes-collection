@@ -1,8 +1,6 @@
 package com.college.recipes_collection.models;
 
-import java.util.Date;
-
-import org.hibernate.annotations.CreationTimestamp;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -49,8 +47,7 @@ public class User {
     private Double salary;
 
     @Column(name = "ingressed_at", updatable = false)
-    @CreationTimestamp
-    private Date ingressedAt;
+    private LocalDateTime ingressedAt;
 
     @Column(nullable = true, unique = true, name = "fantasy_name")
     private String fantasyName;
