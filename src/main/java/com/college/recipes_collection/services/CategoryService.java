@@ -23,7 +23,7 @@ public class CategoryService {
         categoryRepository.save(category);
     }
 
-    public CategoryResponseDTO getCategory(int id) {
+    public CategoryResponseDTO getCategoryById(int id) {
         Category category = categoryRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Category not found"));
 
