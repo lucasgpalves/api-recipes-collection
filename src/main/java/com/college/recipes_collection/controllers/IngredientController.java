@@ -50,7 +50,7 @@ public class IngredientController {
         return ResponseEntity.ok(updatedIngredient);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteIngredient(@PathVariable int id) {
         ingredientService.deleteIngredient(id);
         return ResponseEntity.noContent().build();
