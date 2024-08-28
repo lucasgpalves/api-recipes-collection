@@ -1,6 +1,5 @@
 package com.college.recipes_collection.services;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,7 +28,6 @@ public class UserService {
 
         createdUser.setCpf(request.cpf());
         createdUser.setName(request.name());
-        createdUser.setIngressedAt(new Date());
         createdUser.setSalary(request.salary());
         
         Role role = roleRepository.findByName(request.roleName());
@@ -74,7 +72,6 @@ public class UserService {
         
         updatedUser.setCpf(request.cpf());
         updatedUser.setName(request.name());
-        updatedUser.setIngressedAt(new Date());
         updatedUser.setSalary(request.salary());
         
         Role role = roleRepository.findByName(request.roleName());

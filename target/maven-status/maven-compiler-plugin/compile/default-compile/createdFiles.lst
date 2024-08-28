@@ -1,7 +1,1 @@
 com\college\recipes_collection\RecipesCollectionApplication.class
-com\college\recipes_collection\repositories\UserRepository.class
-com\college\recipes_collection\models\User.class
-com\college\recipes_collection\repositories\RoleRepository.class
-com\college\recipes_collection\services\UserService.class
-com\college\recipes_collection\models\Role.class
-com\college\recipes_collection\dto\requests\UserRequestDTO.class
