@@ -2,6 +2,8 @@ package com.college.recipes_collection.models;
 
 import java.util.Date;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,8 +12,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -38,14 +40,16 @@ public class User {
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "role_id", referencedColumnName = "roles")
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
 
-    @Column
+    @Column(nullable = false)
+    @NotNull
+    @Min(value = 0)
     private Double salary;
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "ingressed_at")
+    @Column(name = "ingressed_at", updatable = false)
+    @CreationTimestamp
     private Date ingressedAt;
 
     @Column(nullable = true, unique = true, name = "fantasy_name")

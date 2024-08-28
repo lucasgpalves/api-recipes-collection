@@ -1,8 +1,8 @@
-package com.college.recipes_collection.dto;
+package com.college.recipes_collection.requests;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record RoleDTO(
+public record RoleRequestDTO(
     @NotBlank
     String name
 ) {
