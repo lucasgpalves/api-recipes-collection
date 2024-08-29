@@ -36,5 +36,4 @@ public record RecipeRequestDTO(
         this.portions = portions;
         this.description = (description == null || description.isBlank()) ? "" : description;
     }
-    
 }
