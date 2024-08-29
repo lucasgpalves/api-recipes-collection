@@ -18,7 +18,6 @@ public class RoleService {
     private RoleRepository roleRepository;
 
     public void createRole(RoleRequestDTO request) {
-        System.out.println("Received RoleRequestDTO: " + request);
         Role role = new Role();
         role.setName(request.name());
         roleRepository.save(role);

@@ -1,4 +1,5 @@
 com\college\recipes_collection\repositories\UserRepository.class
+com\college\recipes_collection\controllers\MeasurementController.class
 com\college\recipes_collection\services\IngredientService.class
 com\college\recipes_collection\services\UserService.class
 com\college\recipes_collection\models\User.class
@@ -13,8 +14,12 @@ com\college\recipes_collection\models\Ingredient.class
 com\college\recipes_collection\services\RoleService.class
 com\college\recipes_collection\controllers\IngredientController.class
 com\college\recipes_collection\repositories\CategoryRepository.class
+com\college\recipes_collection\requests\MeasurementRequestDTO.class
 com\college\recipes_collection\RecipesCollectionApplication.class
 com\college\recipes_collection\controllers\CategoryController.class
+com\college\recipes_collection\repositories\MeasurementRepository.class
+com\college\recipes_collection\services\MeasurementService.class
+com\college\recipes_collection\models\Measurement.class
 com\college\recipes_collection\repositories\RoleRepository.class
 com\college\recipes_collection\services\CategoryService.class
 com\college\recipes_collection\responses\UserResponseDTO.class
@@ -23,4 +28,5 @@ com\college\recipes_collection\responses\IngredientResponseDTO.class
 com\college\recipes_collection\models\Role.class
 com\college\recipes_collection\responses\CategoryResponseDTO.class
 com\college\recipes_collection\requests\IngredientRequestDTO.class
+com\college\recipes_collection\responses\MeasurementResponseDTO.class
 com\college\recipes_collection\requests\RoleRequestDTO.class
