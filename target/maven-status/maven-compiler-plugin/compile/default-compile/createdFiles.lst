@@ -14,6 +14,7 @@ com\college\recipes_collection\services\RoleService.class
 com\college\recipes_collection\controllers\IngredientController.class
 com\college\recipes_collection\repositories\CategoryRepository.class
 com\college\recipes_collection\RecipesCollectionApplication.class
+com\college\recipes_collection\controllers\CategoryController.class
 com\college\recipes_collection\repositories\RoleRepository.class
 com\college\recipes_collection\services\CategoryService.class
 com\college\recipes_collection\responses\UserResponseDTO.class

@@ -17,6 +17,7 @@ import com.college.recipes_collection.responses.RoleResponseDTO;
 import com.college.recipes_collection.services.RoleService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/roles")
@@ -26,7 +27,7 @@ public class RoleController {
     private RoleService roleService;
 
     @PostMapping
-    public ResponseEntity<Void> createUser(@RequestBody RoleRequestDTO request) {
+    public ResponseEntity<Void> createRole(@Valid @RequestBody RoleRequestDTO request) {
         roleService.createRole(request);
         return ResponseEntity.ok().build();
     }

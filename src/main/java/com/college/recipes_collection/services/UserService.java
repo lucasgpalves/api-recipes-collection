@@ -1,5 +1,6 @@
 package com.college.recipes_collection.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,13 +29,14 @@ public class UserService {
 
         createdUser.setCpf(request.cpf());
         createdUser.setName(request.name());
+        createdUser.setIngressedAt(LocalDateTime.now());
         createdUser.setSalary(request.salary());
         
         Role role = roleRepository.findByName(request.roleName());
         if(role == null){
-            createdUser.setRole(role);
-        } else {
             throw new RoleNotFoundException("Role not found: " + request.roleName());
+        } else {
+            createdUser.setRole(role);
         }
 
         userRepository.save(createdUser);
