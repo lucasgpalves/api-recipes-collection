@@ -29,12 +29,12 @@ com\college\recipes_collection\repositories\RoleRepository.class
 com\college\recipes_collection\services\CategoryService.class
 com\college\recipes_collection\responses\UserResponseDTO.class
 com\college\recipes_collection\repositories\RecipeRepository.class
+com\college\recipes_collection\config\OpenApiConfig.class
 com\college\recipes_collection\models\IngredientsList.class
 com\college\recipes_collection\requests\UserRequestDTO.class
 com\college\recipes_collection\responses\IngredientResponseDTO.class
 com\college\recipes_collection\models\Role.class
 com\college\recipes_collection\responses\CategoryResponseDTO.class
 com\college\recipes_collection\requests\IngredientRequestDTO.class
-com\college\recipes_collection\config\SwaggerConfig.class
 com\college\recipes_collection\responses\MeasurementResponseDTO.class
 com\college\recipes_collection\requests\RoleRequestDTO.class
