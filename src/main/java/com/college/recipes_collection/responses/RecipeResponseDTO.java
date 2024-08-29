@@ -3,7 +3,7 @@ package com.college.recipes_collection.responses;
 import java.time.LocalDateTime;
 
 public record RecipeResponseDTO(
-    int id,
+    Long id,
     String userName,
     String name,
     String categoryName,

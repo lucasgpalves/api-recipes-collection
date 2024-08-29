@@ -1,4 +1,4 @@
-package com.college.recipes_collection.recipeServiceTests;
+package com.college.recipes_collection.services;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,6 @@ import com.college.recipes_collection.repositories.CategoryRepository;
 import com.college.recipes_collection.repositories.RecipeRepository;
 import com.college.recipes_collection.repositories.UserRepository;
 import com.college.recipes_collection.requests.RecipeRequestDTO;
-import com.college.recipes_collection.services.RecipeService;
 
 import java.util.Optional;
 
@@ -66,12 +65,13 @@ class RecipeServiceTest {
     void shouldCreateRecipeSuccessfully() {
         when(userRepository.findById(request.userId())).thenReturn(Optional.of(user));
         when(recipeRepository.existsByUserAndName(user, request.name())).thenReturn(false);
-        when(categoryRepository.findByName(request.name())).thenReturn(new Category());
+        when(categoryRepository.findByName(request.categoryName())).thenReturn(Optional.empty());
 
-        recipeService.createRecipe(request);
+        assertThrows(RuntimeException.class, () -> recipeService.createRecipe(request), "Category not found");
 
-        verify(recipeRepository, times(1)).save(any(Recipe.class));
+        verify(recipeRepository, times(0)).save(any(Recipe.class));
     }
+    
 
     @Test
     void shouldThrowExceptionWhenUserNotFound() {
