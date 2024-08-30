@@ -1,4 +1,4 @@
-package com.college.recipes_collection.responses;
+package com.college.recipes_collection.dto.responses;
 
 import java.time.LocalDateTime;
 

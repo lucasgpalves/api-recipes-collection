@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.college.recipes_collection.requests.RecipeRequestDTO;
-import com.college.recipes_collection.responses.RecipeResponseDTO;
+import com.college.recipes_collection.dto.responses.RecipeResponseDTO;
+import com.college.recipes_collection.dto.requests.RecipeRequestDTO;
 import com.college.recipes_collection.services.RecipeService;
 
 @RestController

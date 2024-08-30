@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.college.recipes_collection.dto.responses.RoleResponseDTO;
 import com.college.recipes_collection.models.Role;
 import com.college.recipes_collection.repositories.RoleRepository;
-import com.college.recipes_collection.requests.RoleRequestDTO;
-import com.college.recipes_collection.responses.RoleResponseDTO;
+import com.college.recipes_collection.dto.requests.RoleRequestDTO;
 
 @Service
 public class RoleService {

@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.college.recipes_collection.dto.responses.MeasurementResponseDTO;
 import com.college.recipes_collection.models.Measurement;
 import com.college.recipes_collection.repositories.MeasurementRepository;
-import com.college.recipes_collection.requests.MeasurementRequestDTO;
-import com.college.recipes_collection.responses.MeasurementResponseDTO;
+import com.college.recipes_collection.dto.requests.MeasurementRequestDTO;
 
 @Service
 public class MeasurementService {

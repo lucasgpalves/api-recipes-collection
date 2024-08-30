@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.college.recipes_collection.dto.RecipeVerificationResult;
+import com.college.recipes_collection.dto.responses.RecipeResponseDTO;
 import com.college.recipes_collection.exceptions.RecipeAlreadyExistsException;
 import com.college.recipes_collection.models.Category;
 import com.college.recipes_collection.models.Recipe;
@@ -14,8 +15,7 @@ import com.college.recipes_collection.models.User;
 import com.college.recipes_collection.repositories.CategoryRepository;
 import com.college.recipes_collection.repositories.RecipeRepository;
 import com.college.recipes_collection.repositories.UserRepository;
-import com.college.recipes_collection.requests.RecipeRequestDTO;
-import com.college.recipes_collection.responses.RecipeResponseDTO;
+import com.college.recipes_collection.dto.requests.RecipeRequestDTO;
 
 @Service
 public class RecipeService {
