@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.college.recipes_collection.dto.requests.IngredientsRecipeRequestDTO;
 import com.college.recipes_collection.dto.requests.RecipeRequestDTO;
 import com.college.recipes_collection.exceptions.RecipeAlreadyExistsException;
 import com.college.recipes_collection.models.Category;
@@ -16,6 +17,7 @@ import com.college.recipes_collection.repositories.CategoryRepository;
 import com.college.recipes_collection.repositories.RecipeRepository;
 import com.college.recipes_collection.repositories.UserRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -57,6 +59,12 @@ class RecipeServiceTest {
             "Cake",
             "Preparation Method",
             4.0,
+            List.of(
+                new IngredientsRecipeRequestDTO(250.00, 
+                "Sugar", 
+                "g")
+                // Você pode adicionar mais ingredientes aqui, se necessário
+            ),
             "Description"
         );
     }
