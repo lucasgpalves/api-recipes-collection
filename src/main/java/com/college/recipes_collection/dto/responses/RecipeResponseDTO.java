@@ -1,6 +1,7 @@
 package com.college.recipes_collection.dto.responses;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public record RecipeResponseDTO(
     Long id,
@@ -10,9 +11,8 @@ public record RecipeResponseDTO(
     LocalDateTime createdAt,
     String preparationMethod,
     Double portions,
+    List<IngredientsRecipeResponseDTO> ingredients,
     String description,
     Boolean isPublished,
     Boolean isRated
-) {
-    
-}
+) {}

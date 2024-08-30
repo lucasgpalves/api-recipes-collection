@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.college.recipes_collection.dto.responses.RecipeResponseDTO;
+import com.college.recipes_collection.dto.responses.RecipeSummariesDTO;
 import com.college.recipes_collection.dto.requests.RecipeRequestDTO;
 import com.college.recipes_collection.services.RecipeService;
 
@@ -37,15 +38,15 @@ public class RecipeController {
     }
 
     @GetMapping
-    public ResponseEntity<List<RecipeResponseDTO>> getAllRecipes() {
-        List<RecipeResponseDTO> recipes = recipeService.getAllRecipes();
+    public ResponseEntity<List<RecipeSummariesDTO>> getAllRecipes() {
+        List<RecipeSummariesDTO> recipes = recipeService.getAllRecipes();
         return ResponseEntity.ok(recipes);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RecipeResponseDTO> updateRecipeById(@PathVariable Long id, @RequestBody RecipeRequestDTO request) {
-        RecipeResponseDTO recipe = recipeService.updateRecipeById(id, request);
-        return ResponseEntity.ok(recipe);
+    public ResponseEntity<Void> updateRecipeById(@PathVariable Long id, @RequestBody RecipeRequestDTO request) {
+        recipeService.updateRecipeById(id, request);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
