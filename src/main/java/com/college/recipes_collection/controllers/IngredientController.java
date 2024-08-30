@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.college.recipes_collection.requests.IngredientRequestDTO;
-import com.college.recipes_collection.responses.IngredientResponseDTO;
+import com.college.recipes_collection.dto.responses.IngredientResponseDTO;
+import com.college.recipes_collection.dto.requests.IngredientRequestDTO;
 import com.college.recipes_collection.services.IngredientService;
 
 import jakarta.validation.Valid;

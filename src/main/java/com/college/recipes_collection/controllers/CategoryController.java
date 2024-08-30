@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.college.recipes_collection.requests.CategoryRequestDTO;
-import com.college.recipes_collection.responses.CategoryResponseDTO;
+import com.college.recipes_collection.dto.responses.CategoryResponseDTO;
+import com.college.recipes_collection.dto.requests.CategoryRequestDTO;
 import com.college.recipes_collection.services.CategoryService;
 
 import jakarta.validation.Valid;

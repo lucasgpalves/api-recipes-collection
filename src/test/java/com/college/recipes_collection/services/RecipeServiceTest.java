@@ -7,6 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.college.recipes_collection.dto.requests.RecipeRequestDTO;
 import com.college.recipes_collection.exceptions.RecipeAlreadyExistsException;
 import com.college.recipes_collection.models.Category;
 import com.college.recipes_collection.models.Recipe;
@@ -14,7 +15,6 @@ import com.college.recipes_collection.models.User;
 import com.college.recipes_collection.repositories.CategoryRepository;
 import com.college.recipes_collection.repositories.RecipeRepository;
 import com.college.recipes_collection.repositories.UserRepository;
-import com.college.recipes_collection.requests.RecipeRequestDTO;
 
 import java.util.Optional;
 

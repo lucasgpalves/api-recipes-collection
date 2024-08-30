@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.college.recipes_collection.dto.responses.CategoryResponseDTO;
 import com.college.recipes_collection.models.Category;
 import com.college.recipes_collection.repositories.CategoryRepository;
-import com.college.recipes_collection.requests.CategoryRequestDTO;
-import com.college.recipes_collection.responses.CategoryResponseDTO;
+import com.college.recipes_collection.dto.requests.CategoryRequestDTO;
 
 @Service
 public class CategoryService {

@@ -6,10 +6,10 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.college.recipes_collection.dto.responses.IngredientResponseDTO;
 import com.college.recipes_collection.models.Ingredient;
 import com.college.recipes_collection.repositories.IngredientRepository;
-import com.college.recipes_collection.requests.IngredientRequestDTO;
-import com.college.recipes_collection.responses.IngredientResponseDTO;
+import com.college.recipes_collection.dto.requests.IngredientRequestDTO;
 
 @Service
 public class IngredientService {

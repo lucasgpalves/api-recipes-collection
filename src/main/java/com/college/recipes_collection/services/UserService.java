@@ -7,13 +7,13 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.college.recipes_collection.dto.responses.UserResponseDTO;
 import com.college.recipes_collection.exceptions.RoleNotFoundException;
 import com.college.recipes_collection.models.Role;
 import com.college.recipes_collection.models.User;
 import com.college.recipes_collection.repositories.RoleRepository;
 import com.college.recipes_collection.repositories.UserRepository;
-import com.college.recipes_collection.requests.UserRequestDTO;
-import com.college.recipes_collection.responses.UserResponseDTO;
+import com.college.recipes_collection.dto.requests.UserRequestDTO;
 
 @Service
 public class UserService {
