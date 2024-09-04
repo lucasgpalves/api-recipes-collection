@@ -60,21 +60,6 @@ public class RecipeService {
         saveIngredientForRecipe(createdRecipe, request.ingredientsRecipe());
     }       
 
-    private void saveIngredientForRecipe(Recipe recipe, List<IngredientsRecipeRequestDTO> ingredientsRequestDto) {
-        for (IngredientsRecipeRequestDTO ingredientRequest : ingredientsRequestDto) {
-            IngredientsRecipe ingredientsRecipe = new IngredientsRecipe();
-            ingredientsRecipe.setAmount(ingredientRequest.amount());
-
-            Ingredient ingredient = findIngredientByName(ingredientRequest.ingredientName());
-            ingredientsRecipe.setIngredient(ingredient);
-
-            Measurement measurement = findMeasurementByName(ingredientRequest.measurementName());
-            ingredientsRecipe.setMeasurement(measurement);
-
-            ingredientsRecipeRepository.save(ingredientsRecipe);            
-        }
-    }
-
     public List<RecipeSummariesDTO> getAllRecipes() {
         return recipeRepository.findAll().stream()
             .map(recipe -> new RecipeSummariesDTO(
@@ -118,6 +103,22 @@ public class RecipeService {
         }
 
         return recipeRepository.save(recipe);
+    }
+
+    
+    private void saveIngredientForRecipe(Recipe recipe, List<IngredientsRecipeRequestDTO> ingredientsRequestDto) {
+        for (IngredientsRecipeRequestDTO ingredientRequest : ingredientsRequestDto) {
+            IngredientsRecipe ingredientsRecipe = new IngredientsRecipe();
+            ingredientsRecipe.setAmount(ingredientRequest.amount());
+
+            Ingredient ingredient = findIngredientByName(ingredientRequest.ingredientName());
+            ingredientsRecipe.setIngredient(ingredient);
+
+            Measurement measurement = findMeasurementByName(ingredientRequest.measurementName());
+            ingredientsRecipe.setMeasurement(measurement);
+
+            ingredientsRecipeRepository.save(ingredientsRecipe);            
+        }
     }
 
     private RecipeResponseDTO mapToRecipeResponseDTO(Recipe recipe) {
