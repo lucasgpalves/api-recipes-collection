@@ -1,6 +1,5 @@
 package com.college.recipes_collection.services;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -52,29 +51,14 @@ public class RecipeService {
     }
 
     public void createRecipe(RecipeRequestDTO request) {
-        Recipe recipe = saveRecipe(request);
-        saveIngredientForRecipe(recipe, request.ingredientsRecipe());
-    }       
-
-    private Recipe saveRecipe(RecipeRequestDTO request) {
         RecipeVerificationResult result = checkIfSameRecipeExistsForUser(request.userId(), request.name());
 
         Recipe recipe = new Recipe();
         recipe.setUser(result.getUser());
-        recipe.setName(request.name());
 
-        Category category = findCategoryByName(request.categoryName());
-        recipe.setCategory(category);
-
-        recipe.setCreatedAt(LocalDateTime.now());
-        recipe.setPreparationMethod(request.preparationMethod());
-        recipe.setPortions(request.portions());
-        recipe.setDescription(request.description());
-        recipe.setIsPublished(false);
-        recipe.setIsRated(false);
-
-        return recipeRepository.save(recipe);
-    }
+        Recipe createdRecipe = saveRecipe(recipe, request);
+        saveIngredientForRecipe(createdRecipe, request.ingredientsRecipe());
+    }       
 
     private void saveIngredientForRecipe(Recipe recipe, List<IngredientsRecipeRequestDTO> ingredientsRequestDto) {
         for (IngredientsRecipeRequestDTO ingredientRequest : ingredientsRequestDto) {
@@ -106,6 +90,36 @@ public class RecipeService {
         return mapToRecipeResponseDTO(recipe);
     }
 
+    //Atualizado o tipo de retorno
+    public void updateRecipeById(Long id, RecipeRequestDTO request) {
+        Recipe recipe = verifyIfRecipeExists(id);
+        Recipe updatedRecipe = saveRecipe(recipe, request);
+        saveIngredientForRecipe(updatedRecipe, request.ingredientsRecipe());
+    }
+
+    public void deleteRecipeById(Long id) {
+        if (recipeRepository.existsById(id)) {
+            recipeRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Recipe not found");
+        }
+    }
+
+    private Recipe saveRecipe(Recipe recipe, RecipeRequestDTO request) {
+        recipe.setName(request.name());
+        recipe.setCategory(findCategoryByName(request.categoryName()));
+        recipe.setPreparationMethod(request.preparationMethod());
+        recipe.setPortions(request.portions());
+        recipe.setDescription(request.description());
+
+        if (recipe.getId() == null) {
+            recipe.setIsPublished(false);
+            recipe.setIsRated(false);
+        }
+
+        return recipeRepository.save(recipe);
+    }
+
     private RecipeResponseDTO mapToRecipeResponseDTO(Recipe recipe) {
         List<IngredientsRecipeResponseDTO> ingredientsDtos = recipe.getIngredients().stream()
             .map(this::mapToIngredientsRecipeResponseDto)
@@ -132,33 +146,6 @@ public class RecipeService {
             ingredientsRecipe.getIngredient().getName(), 
             ingredientsRecipe.getMeasurement().getName()
         );
-    }
-
-    //Atualizado o tipo de retorno
-    public void updateRecipeById(Long id, RecipeRequestDTO request) {
-        Recipe recipe = saveUpdatedRecipe(id, request);
-        saveIngredientForRecipe(recipe, request.ingredientsRecipe());
-    }
-
-    private Recipe saveUpdatedRecipe(Long id, RecipeRequestDTO request) {
-        Recipe recipe = verifyIfRecipeExists(id);
-
-        recipe.setName(request.name());
-        Category category = findCategoryByName(request.categoryName());
-        recipe.setCategory(category);
-        recipe.setPreparationMethod(request.preparationMethod());
-        recipe.setPortions(request.portions());
-        recipe.setDescription(request.description());
-
-        return recipeRepository.save(recipe);
-    }
-
-    public void deleteRecipeById(Long id) {
-        if (recipeRepository.existsById(id)) {
-            recipeRepository.deleteById(id);
-        } else {
-            throw new RuntimeException("Recipe not found");
-        }
     }
 
     private RecipeVerificationResult checkIfSameRecipeExistsForUser(Long userId, String name) {
