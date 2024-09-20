@@ -27,19 +27,7 @@ public class UserService {
     public void createUser(UserRequestDTO request) {
         User createdUser = new User();
 
-        createdUser.setCpf(request.cpf());
-        createdUser.setName(request.name());
-        createdUser.setIngressedAt(LocalDateTime.now());
-        createdUser.setSalary(request.salary());
-        
-        Role role = roleRepository.findByName(request.roleName());
-        if(role == null){
-            throw new RoleNotFoundException("Role not found: " + request.roleName());
-        } else {
-            createdUser.setRole(role);
-        }
-
-        userRepository.save(createdUser);
+        saveUser(createdUser, request);
     }
 
     public UserResponseDTO getUserById(Long id) {
@@ -67,31 +55,10 @@ public class UserService {
             .collect(Collectors.toList());
     }
 
-    public UserResponseDTO updateUser(Long id, UserRequestDTO request) {
+    public void updateUser(Long id, UserRequestDTO request) {
         User updatedUser = userRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("User not found"));
-
-        
-        updatedUser.setCpf(request.cpf());
-        updatedUser.setName(request.name());
-        updatedUser.setSalary(request.salary());
-        
-        Role role = roleRepository.findByName(request.roleName());
-        if(role == null){
-            updatedUser.setRole(role);
-        } else {
-            throw new RoleNotFoundException("Role not found: " + request.roleName());
-        }
-
-        User savedUser = userRepository.save(updatedUser);
-
-        return new UserResponseDTO(
-            savedUser.getCpf(), 
-            savedUser.getName(), 
-            savedUser.getRole() == null ? null : savedUser.getRole().getName(), 
-            savedUser.getSalary(), 
-            savedUser.getFantasyName()
-        );
+        saveUser(updatedUser, request);
     }
 
     public void deleteUser(Long id) {
@@ -100,5 +67,24 @@ public class UserService {
         } else {
             throw new RuntimeException("User not found");
         }
+    }
+
+    private User saveUser(User user, UserRequestDTO request) {
+        user.setCpf(request.cpf());
+        user.setName(request.name());
+        user.setSalary(request.salary());
+
+        if (user.getId() == null) {
+            user.setIngressedAt(LocalDateTime.now());
+        }
+
+        Role role = roleRepository.findByName(request.roleName());
+        if(role == null){
+            throw new RoleNotFoundException("Role not found: " + request.roleName());
+        } else {
+            user.setRole(role);
+        }
+
+        return userRepository.save(user);
     }
 }

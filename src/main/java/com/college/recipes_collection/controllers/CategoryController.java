@@ -11,14 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.college.recipes_collection.dto.responses.CategoryResponseDTO;
 import com.college.recipes_collection.dto.requests.CategoryRequestDTO;
 import com.college.recipes_collection.services.CategoryService;
 
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PutMapping;
-
 
 @RestController
 @RequestMapping("/categories")
