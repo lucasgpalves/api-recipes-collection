@@ -59,6 +59,7 @@ class RecipeServiceTest {
             "Cake",
             "Preparation Method",
             4.0,
+            60,
             List.of(
                 new IngredientsRecipeRequestDTO(250.00, 
                 "Sugar", 

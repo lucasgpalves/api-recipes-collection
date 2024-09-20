@@ -13,5 +13,4 @@ CREATE TABLE recipes(
 
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (category_id) REFERENCES categories(id)
-
 );
