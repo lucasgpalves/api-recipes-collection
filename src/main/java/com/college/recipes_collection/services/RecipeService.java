@@ -75,7 +75,6 @@ public class RecipeService {
         return mapToRecipeResponseDTO(recipe);
     }
 
-    //Atualizado o tipo de retorno
     public void updateRecipeById(Long id, RecipeRequestDTO request) {
         Recipe recipe = verifyIfRecipeExists(id);
         Recipe updatedRecipe = saveRecipe(recipe, request);
@@ -90,13 +89,16 @@ public class RecipeService {
         }
     }
 
+    //Código utilizado para criar e atualizar receitas
     private Recipe saveRecipe(Recipe recipe, RecipeRequestDTO request) {
         recipe.setName(request.name());
         recipe.setCategory(findCategoryByName(request.categoryName()));
         recipe.setPreparationMethod(request.preparationMethod());
         recipe.setPortions(request.portions());
         recipe.setDescription(request.description());
+        recipe.setPreparationTime(request.preparationTime());
 
+        //Será executado apenas durante a criação
         if (recipe.getId() == null) {
             recipe.setIsPublished(false);
             recipe.setIsRated(false);
@@ -104,7 +106,6 @@ public class RecipeService {
 
         return recipeRepository.save(recipe);
     }
-
     
     private void saveIngredientForRecipe(Recipe recipe, List<IngredientsRecipeRequestDTO> ingredientsRequestDto) {
         for (IngredientsRecipeRequestDTO ingredientRequest : ingredientsRequestDto) {

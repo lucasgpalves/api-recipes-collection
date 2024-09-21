@@ -21,6 +21,9 @@ public record RecipeRequestDTO(
     @NotNull
     Double portions,
 
+    @NotNull
+    int preparationTime,
+
     List<IngredientsRecipeRequestDTO> ingredientsRecipe,
 
     String description
@@ -31,6 +34,7 @@ public record RecipeRequestDTO(
         @NotBlank String categoryName,
         @NotBlank String preparationMethod,
         @NotNull Double portions,
+        @NotNull int preparationTime,
         List<IngredientsRecipeRequestDTO> ingredientsRecipe,
         String description
     ) {
@@ -39,6 +43,7 @@ public record RecipeRequestDTO(
         this.categoryName = categoryName;
         this.preparationMethod = preparationMethod;
         this.portions = portions;
+        this.preparationTime = preparationTime;
         this.ingredientsRecipe = ingredientsRecipe;
         this.description = (description == null || description.isBlank()) ? "" : description;
     }

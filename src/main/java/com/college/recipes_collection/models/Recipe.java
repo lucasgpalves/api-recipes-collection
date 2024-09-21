@@ -51,6 +51,9 @@ public class Recipe {
     @Column(nullable = false)
     private Double portions;
 
+    @Column(name = "preparation_time",nullable = false)
+    private int preparationTime;
+
     @Column(nullable = true)
     private String description;
 
