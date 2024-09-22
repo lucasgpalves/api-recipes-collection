@@ -43,15 +43,13 @@ public class RoleService {
             .collect(Collectors.toList());
     }
 
-    public RoleResponseDTO updateRole(int id, RoleRequestDTO request) {
+    public void updateRole(int id, RoleRequestDTO request) {
         Role updatedRole = roleRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Role not found"));
 
         updatedRole.setName(request.name());
 
-        Role savedRole = roleRepository.save(updatedRole);
-
-        return new RoleResponseDTO(savedRole.getId(), savedRole.getName());
+        roleRepository.save(updatedRole);
     }
 
     public void deleteRole(int id) {
