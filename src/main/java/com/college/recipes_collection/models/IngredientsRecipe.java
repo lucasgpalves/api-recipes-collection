@@ -35,10 +35,10 @@ public class IngredientsRecipe {
     private Recipe recipe;
 
     @ManyToOne
-    @JoinColumn(name = "ingredient_id", referencedColumnName = "id")
+    @JoinColumn(name = "ingredient_id", referencedColumnName = "id", nullable = false)
     private Ingredient ingredient;
 
     @ManyToOne
-    @JoinColumn(name = "measurement_id", referencedColumnName = "id")
+    @JoinColumn(name = "measurement_id", referencedColumnName = "id", nullable = false)
     private Measurement measurement;
 }

@@ -44,6 +44,7 @@ public class MeasurementController {
         return ResponseEntity.ok(measurements);
     }
 
+    //Alterar para tipo de retorno void noContent
     @PutMapping("/{id}")
     public ResponseEntity<MeasurementResponseDTO> updateMeasurement(@PathVariable int id, @RequestBody MeasurementRequestDTO request) {
         MeasurementResponseDTO updatedMeasurement = measurementService.updateMeasurement(id, request);

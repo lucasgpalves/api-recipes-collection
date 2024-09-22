@@ -24,6 +24,7 @@ public record RecipeRequestDTO(
     @NotNull
     int preparationTime,
 
+    @NotNull
     List<IngredientsRecipeRequestDTO> ingredientsRecipe,
 
     String description
@@ -35,7 +36,7 @@ public record RecipeRequestDTO(
         @NotBlank String preparationMethod,
         @NotNull Double portions,
         @NotNull int preparationTime,
-        List<IngredientsRecipeRequestDTO> ingredientsRecipe,
+        @NotNull List<IngredientsRecipeRequestDTO> ingredientsRecipe,
         String description
     ) {
         this.userId = userId;
