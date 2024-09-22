@@ -46,9 +46,9 @@ public class IngredientController {
 
     //Alterar para retornar noContent
     @PutMapping("/{id}")
-    public ResponseEntity<IngredientResponseDTO> updateIngredient(@PathVariable int id,@Valid @RequestBody IngredientRequestDTO request) {
-        IngredientResponseDTO updatedIngredient = ingredientService.updateIngredient(id, request);
-        return ResponseEntity.ok(updatedIngredient);
+    public ResponseEntity<Void> updateIngredient(@PathVariable int id,@Valid @RequestBody IngredientRequestDTO request) {
+        ingredientService.updateIngredient(id, request);
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")

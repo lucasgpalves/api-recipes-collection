@@ -47,20 +47,14 @@ public class IngredientService {
             .collect(Collectors.toList());
     }
 
-    public IngredientResponseDTO updateIngredient(int id, IngredientRequestDTO request) {
+    public void updateIngredient(int id, IngredientRequestDTO request) {
         Ingredient updatedIngredient = ingredientRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Ingredient not found"));
 
         updatedIngredient.setName(request.name());
         updatedIngredient.setDescription(request.description());
 
-        Ingredient savedIngredient = ingredientRepository.save(updatedIngredient);
-
-        return new IngredientResponseDTO(
-            savedIngredient.getId(),
-            savedIngredient.getName(),
-            savedIngredient.getDescription()
-        );
+        ingredientRepository.save(updatedIngredient);
     }
 
     public void deleteIngredient(int id) {
