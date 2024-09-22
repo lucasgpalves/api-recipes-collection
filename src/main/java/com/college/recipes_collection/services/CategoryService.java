@@ -42,17 +42,12 @@ public class CategoryService {
             .collect(Collectors.toList());
     }
 
-    public CategoryResponseDTO updateCategory(int id, CategoryRequestDTO request) {
+    public void updateCategory(int id, CategoryRequestDTO request) {
         Category updatedCategory = categoryRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Category not found"));
 
         updatedCategory.setName(request.name());
-        Category savedCategory = categoryRepository.save(updatedCategory);
-
-        return new CategoryResponseDTO(
-            savedCategory.getId(), 
-            savedCategory.getName()
-        );
+        categoryRepository.save(updatedCategory);
     }
 
     public void deleteCategory(int id) {

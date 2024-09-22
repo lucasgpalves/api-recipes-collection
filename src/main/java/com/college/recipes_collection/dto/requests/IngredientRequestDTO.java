@@ -14,6 +14,6 @@ public record IngredientRequestDTO(
     ) {
         this.name = name;
         //Mudar o valor atribuido para "" e não null
-        this.description = (description == null || description.isBlank()) ? null : description;
+        this.description = (description == null || description.isBlank()) ? "" : description;
     }
 }
