@@ -46,20 +46,14 @@ public class MeasurementService {
             .collect(Collectors.toList());
     }
 
-    public MeasurementResponseDTO updateMeasurement(int id, MeasurementRequestDTO request) {
+    public void updateMeasurement(int id, MeasurementRequestDTO request) {
         Measurement updatedMeasurement = measurementRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Measurement not found"));
 
         updatedMeasurement.setName(request.name());
         updatedMeasurement.setDescription(request.description());
 
-        Measurement savedMeasurement = measurementRepository.save(updatedMeasurement);
-
-        return new MeasurementResponseDTO(
-            savedMeasurement.getId(),
-            savedMeasurement.getName(),
-            savedMeasurement.getDescription()
-        );
+        measurementRepository.save(updatedMeasurement);
     }
 
     public void deleteMeasurement(int id) {
