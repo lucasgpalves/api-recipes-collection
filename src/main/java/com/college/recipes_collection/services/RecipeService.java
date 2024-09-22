@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.time.LocalDateTime;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.college.recipes_collection.dto.RecipeVerificationResult;
@@ -29,27 +30,23 @@ import com.college.recipes_collection.dto.requests.RecipeRequestDTO;
 @Service
 public class RecipeService {
     
-    private final RecipeRepository recipeRepository;
-    private final UserRepository userRepository;
-    private final CategoryRepository categoryRepository;
-    private final IngredientRepository ingredientRepository;
-    private final MeasurementRepository measurementRepository;
-    private final IngredientsRecipeRepository ingredientsRecipeRepository;
-
-    public RecipeService(RecipeRepository recipeRepository, 
-        UserRepository userRepository, 
-        CategoryRepository categoryRepository, 
-        IngredientRepository ingredientRepository, 
-        MeasurementRepository measurementRepository,
-        IngredientsRecipeRepository ingredientsRecipeRepository
-    ) {
-        this.recipeRepository = recipeRepository;
-        this.userRepository = userRepository;
-        this.categoryRepository = categoryRepository;
-        this.ingredientRepository = ingredientRepository;
-        this.measurementRepository = measurementRepository;
-        this.ingredientsRecipeRepository = ingredientsRecipeRepository;
-    }
+    @Autowired
+    private RecipeRepository recipeRepository;
+    
+    @Autowired
+    private UserRepository userRepository;
+    
+    @Autowired
+    private CategoryRepository categoryRepository;
+    
+    @Autowired
+    private IngredientRepository ingredientRepository;
+    
+    @Autowired
+    private MeasurementRepository measurementRepository;
+    
+    @Autowired
+    private IngredientsRecipeRepository ingredientsRecipeRepository;
 
     public void createRecipe(RecipeRequestDTO request) {
         RecipeVerificationResult result = checkIfSameRecipeExistsForUser(request.userId(), request.name());
