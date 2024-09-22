@@ -2,6 +2,7 @@ package com.college.recipes_collection.services;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 
@@ -100,6 +101,7 @@ public class RecipeService {
 
         //Será executado apenas durante a criação
         if (recipe.getId() == null) {
+            recipe.setCreatedAt(LocalDateTime.now());
             recipe.setIsPublished(false);
             recipe.setIsRated(false);
         }
@@ -110,6 +112,8 @@ public class RecipeService {
     private void saveIngredientForRecipe(Recipe recipe, List<IngredientsRecipeRequestDTO> ingredientsRequestDto) {
         for (IngredientsRecipeRequestDTO ingredientRequest : ingredientsRequestDto) {
             IngredientsRecipe ingredientsRecipe = new IngredientsRecipe();
+            ingredientsRecipe.setRecipe(recipe);
+
             ingredientsRecipe.setAmount(ingredientRequest.amount());
 
             Ingredient ingredient = findIngredientByName(ingredientRequest.ingredientName());

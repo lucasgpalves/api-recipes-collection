@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "ingredients_list")
+@Table(name = "ingredients_recipe")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -35,10 +35,10 @@ public class IngredientsRecipe {
     private Recipe recipe;
 
     @ManyToOne
-    @JoinColumn(name = "ingredient_id", referencedColumnName = "id")
+    @JoinColumn(name = "ingredient_id", referencedColumnName = "id", nullable = false)
     private Ingredient ingredient;
 
     @ManyToOne
-    @JoinColumn(name = "measurement_id", referencedColumnName = "id")
+    @JoinColumn(name = "measurement_id", referencedColumnName = "id", nullable = false)
     private Measurement measurement;
 }

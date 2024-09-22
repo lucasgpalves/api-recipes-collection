@@ -3,6 +3,7 @@ package com.college.recipes_collection.models;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -63,6 +64,6 @@ public class Recipe {
     @Column(nullable = false)
     private Boolean isRated;
 
-    @OneToMany(mappedBy = "recipe")
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = false)
     private List<IngredientsRecipe> ingredients;
 }

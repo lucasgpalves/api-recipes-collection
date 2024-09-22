@@ -13,6 +13,7 @@ public record IngredientRequestDTO(
         String description
     ) {
         this.name = name;
-        this.description = (description == null || description.isBlank()) ? null : description;
+        //Mudar o valor atribuido para "" e não null
+        this.description = (description == null || description.isBlank()) ? "" : description;
     }
 }
