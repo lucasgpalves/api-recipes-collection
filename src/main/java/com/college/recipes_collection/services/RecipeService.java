@@ -87,6 +87,13 @@ public class RecipeService {
         }
     }
 
+    public void updateIsRatingStatus(Long recipeId, boolean isRated) {
+        Recipe recipe = recipeRepository.findById(recipeId)
+                        .orElseThrow(() -> new RuntimeException("Recipe not found"));
+        recipe.setIsRated(isRated);
+        recipeRepository.save(recipe);
+    }
+
     //Código utilizado para criar e atualizar receitas
     private Recipe saveRecipe(Recipe recipe, RecipeRequestDTO request) {
         recipe.setName(request.name());

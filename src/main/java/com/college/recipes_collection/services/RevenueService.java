@@ -1,11 +1,16 @@
 package com.college.recipes_collection.services;
 
+import java.util.stream.Collectors;
+import java.util.List;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
 import com.college.recipes_collection.dto.requests.RevenueRequestDTO;
+import com.college.recipes_collection.dto.responses.RevenueResponseDTO;
+import com.college.recipes_collection.events.models.RevenueCreatedEvent;
 import com.college.recipes_collection.models.Recipe;
 import com.college.recipes_collection.models.Revenue;
 import com.college.recipes_collection.models.User;
@@ -25,17 +30,40 @@ public class RevenueService {
     @Autowired
     private RecipeRepository recipeRepository;
 
+    @Autowired
+    private ApplicationEventPublisher eventPublisher;
+
     public void createRevenue(RevenueRequestDTO request) {
         Revenue revenue = new Revenue();
         saveRevenue(revenue, request);
+        eventPublisher.publishEvent(new RevenueCreatedEvent(request.recipeId()));
     }
 
+    public List<RevenueResponseDTO> getAllRevenues() {
+        return revenueRepository.findAll().stream()
+            .map(revenue -> new RevenueResponseDTO(
+                null, 
+                null, 
+                null, 
+                null
+            )).collect(Collectors.toList());
+    }
+
+    public RevenueResponseDTO getRevenueById(Long id) {
+        Revenue revenue = revenueRepository.findById(id)
+                            .orElseThrow(() -> new RuntimeException("Revenue not found"));
+        return new RevenueResponseDTO(
+            revenue.getRating(), 
+            revenue.getDescription(), 
+            revenue.getUser().getId(), 
+            revenue.getRecipe().getId());
+    }
 
     private void saveRevenue(Revenue revenue, RevenueRequestDTO request) {
         revenue.setRating(request.rating());
         revenue.setDescription(request.description());
-        revenue.setUser(findUser(request));
-        revenue.setRecipe(findRecipe(request));
+        revenue.setUser(findUser(request.userId()));
+        revenue.setRecipe(findRecipe(request.recipeId()));
 
         if (revenue.getId() == null) {
             revenue.setCreatedAt(LocalDateTime.now());
@@ -44,13 +72,13 @@ public class RevenueService {
         revenueRepository.save(revenue);
     }
 
-    private User findUser(RevenueRequestDTO request) {
-        return userRepository.findById(request.userId())
+    private User findUser(Long id) {  
+        return userRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("User not found"));
     }
 
-    private Recipe findRecipe(RevenueRequestDTO request) {
-        return recipeRepository.findById(request.recipeId())
+    private Recipe findRecipe(Long id) {
+        return recipeRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Recipe not found"));
     }
 
