@@ -42,10 +42,10 @@ public class RevenueService {
     public List<RevenueResponseDTO> getAllRevenues() {
         return revenueRepository.findAll().stream()
             .map(revenue -> new RevenueResponseDTO(
-                null, 
-                null, 
-                null, 
-                null
+                revenue.getRating(), 
+                revenue.getDescription(), 
+                revenue.getUser().getId(), 
+                revenue.getRecipe().getId()
             )).collect(Collectors.toList());
     }
 
