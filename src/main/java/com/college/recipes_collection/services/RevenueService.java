@@ -42,10 +42,10 @@ public class RevenueService {
     public List<RevenueResponseDTO> getAllRevenues() {
         return revenueRepository.findAll().stream()
             .map(revenue -> new RevenueResponseDTO(
-                null, 
-                null, 
-                null, 
-                null
+                revenue.getRating(), 
+                revenue.getDescription(), 
+                revenue.getUser().getId(), 
+                revenue.getRecipe().getId()
             )).collect(Collectors.toList());
     }
 
@@ -59,15 +59,26 @@ public class RevenueService {
             revenue.getRecipe().getId());
     }
 
+    public void updateRevenueById(Long id, RevenueRequestDTO request) {
+        Revenue revenue = revenueRepository.findById(id)
+                            .orElseThrow(() -> new RuntimeException("Revenue not found"));
+        saveRevenue(revenue, request);
+    }
+
+    public void deleteRevenueById(Long id) {
+        if (revenueRepository.existsById(id)) {
+            revenueRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Revenue not found");
+        }
+    }
+
     private void saveRevenue(Revenue revenue, RevenueRequestDTO request) {
         revenue.setRating(request.rating());
         revenue.setDescription(request.description());
         revenue.setUser(findUser(request.userId()));
         revenue.setRecipe(findRecipe(request.recipeId()));
-
-        if (revenue.getId() == null) {
-            revenue.setCreatedAt(LocalDateTime.now());
-        }
+        revenue.setCreatedAt(LocalDateTime.now());
 
         revenueRepository.save(revenue);
     }

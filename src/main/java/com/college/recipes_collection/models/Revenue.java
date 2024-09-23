@@ -29,7 +29,7 @@ public class Revenue {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "created_ad")
+    @Column(name = "created_at")
     private LocalDateTime createdAt;
 
     @Column(nullable = false)
