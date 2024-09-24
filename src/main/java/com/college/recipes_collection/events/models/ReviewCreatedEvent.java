@@ -5,6 +5,6 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class RevenueCreatedEvent {
+public class ReviewCreatedEvent {
     private Long recipeId;
 }

@@ -1,4 +1,4 @@
-CREATE TABLE revenues(
+CREATE TABLE reviews(
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     created_at TIMESTAMP,
     rating DECIMAL(3,2) NOT NULL,

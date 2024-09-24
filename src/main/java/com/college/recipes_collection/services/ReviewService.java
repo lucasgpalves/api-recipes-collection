@@ -8,21 +8,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 
-import com.college.recipes_collection.dto.requests.RevenueRequestDTO;
-import com.college.recipes_collection.dto.responses.RevenueResponseDTO;
-import com.college.recipes_collection.events.models.RevenueCreatedEvent;
+import com.college.recipes_collection.dto.requests.ReviewRequestDTO;
+import com.college.recipes_collection.dto.responses.ReviewResponseDTO;
+import com.college.recipes_collection.events.models.ReviewCreatedEvent;
 import com.college.recipes_collection.models.Recipe;
-import com.college.recipes_collection.models.Revenue;
+import com.college.recipes_collection.models.Review;
 import com.college.recipes_collection.models.User;
 import com.college.recipes_collection.repositories.RecipeRepository;
-import com.college.recipes_collection.repositories.RevenueRepository;
+import com.college.recipes_collection.repositories.ReviewRepository;
 import com.college.recipes_collection.repositories.UserRepository;
 
 @Service
-public class RevenueService {
+public class ReviewService {
     
     @Autowired
-    private RevenueRepository revenueRepository;
+    private ReviewRepository revenueRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -33,15 +33,15 @@ public class RevenueService {
     @Autowired
     private ApplicationEventPublisher eventPublisher;
 
-    public void createRevenue(RevenueRequestDTO request) {
-        Revenue revenue = new Revenue();
+    public void createRevenue(ReviewRequestDTO request) {
+        Review revenue = new Review();
         saveRevenue(revenue, request);
-        eventPublisher.publishEvent(new RevenueCreatedEvent(request.recipeId()));
+        eventPublisher.publishEvent(new ReviewCreatedEvent(request.recipeId()));
     }
 
-    public List<RevenueResponseDTO> getAllRevenues() {
+    public List<ReviewResponseDTO> getAllRevenues() {
         return revenueRepository.findAll().stream()
-            .map(revenue -> new RevenueResponseDTO(
+            .map(revenue -> new ReviewResponseDTO(
                 revenue.getRating(), 
                 revenue.getDescription(), 
                 revenue.getUser().getId(), 
@@ -49,18 +49,18 @@ public class RevenueService {
             )).collect(Collectors.toList());
     }
 
-    public RevenueResponseDTO getRevenueById(Long id) {
-        Revenue revenue = revenueRepository.findById(id)
+    public ReviewResponseDTO getRevenueById(Long id) {
+        Review revenue = revenueRepository.findById(id)
                             .orElseThrow(() -> new RuntimeException("Revenue not found"));
-        return new RevenueResponseDTO(
+        return new ReviewResponseDTO(
             revenue.getRating(), 
             revenue.getDescription(), 
             revenue.getUser().getId(), 
             revenue.getRecipe().getId());
     }
 
-    public void updateRevenueById(Long id, RevenueRequestDTO request) {
-        Revenue revenue = revenueRepository.findById(id)
+    public void updateRevenueById(Long id, ReviewRequestDTO request) {
+        Review revenue = revenueRepository.findById(id)
                             .orElseThrow(() -> new RuntimeException("Revenue not found"));
         saveRevenue(revenue, request);
     }
@@ -73,7 +73,7 @@ public class RevenueService {
         }
     }
 
-    private void saveRevenue(Revenue revenue, RevenueRequestDTO request) {
+    private void saveRevenue(Review revenue, ReviewRequestDTO request) {
         revenue.setRating(request.rating());
         revenue.setDescription(request.description());
         revenue.setUser(findUser(request.userId()));
