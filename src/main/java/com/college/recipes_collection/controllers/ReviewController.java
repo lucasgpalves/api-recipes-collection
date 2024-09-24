@@ -27,32 +27,32 @@ public class ReviewController {
     private ReviewService revenueService;
 
     @PostMapping
-    public ResponseEntity<Void> createRevenue(@Valid @RequestBody ReviewRequestDTO request) {
-        revenueService.createRevenue(request);
+    public ResponseEntity<Void> createReview(@Valid @RequestBody ReviewRequestDTO request) {
+        revenueService.createReview(request);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping 
     public ResponseEntity<List<ReviewResponseDTO>> getAllRevenues() {
-        List<ReviewResponseDTO> revenues = revenueService.getAllRevenues();
+        List<ReviewResponseDTO> revenues = revenueService.getAllReviews();
         return ResponseEntity.ok(revenues);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ReviewResponseDTO> getRevenueById(@PathVariable Long id) {
-        ReviewResponseDTO revenue = revenueService.getRevenueById(id);
+    public ResponseEntity<ReviewResponseDTO> getReviewById(@PathVariable Long id) {
+        ReviewResponseDTO revenue = revenueService.getReviewById(id);
         return ResponseEntity.ok(revenue);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateRevenueById(@PathVariable Long id, @Valid @RequestBody ReviewRequestDTO request) {
-        revenueService.updateRevenueById(id ,request);
+    public ResponseEntity<Void> updateReviewById(@PathVariable Long id, @Valid @RequestBody ReviewRequestDTO request) {
+        revenueService.updateReviewById(id ,request);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRevenueById(@PathVariable Long id) {
-        revenueService.deleteRevenueById(id);
+    public ResponseEntity<Void> deleteReviewById(@PathVariable Long id) {
+        revenueService.deleteReviewById(id);
         return ResponseEntity.noContent().build();
     }
 }

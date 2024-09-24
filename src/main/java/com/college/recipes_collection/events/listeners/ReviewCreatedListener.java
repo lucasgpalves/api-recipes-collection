@@ -14,7 +14,7 @@ public class ReviewCreatedListener {
     private RecipeService recipeService;
     
     @EventListener
-    public void handleRevenueCreatedEvent(ReviewCreatedEvent event) {
+    public void handleReviewCreatedEvent(ReviewCreatedEvent event) {
         recipeService.updateIsRatingStatus(event.getRecipeId(), true);
     }
 }

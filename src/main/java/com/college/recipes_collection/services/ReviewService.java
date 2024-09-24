@@ -22,7 +22,7 @@ import com.college.recipes_collection.repositories.UserRepository;
 public class ReviewService {
     
     @Autowired
-    private ReviewRepository revenueRepository;
+    private ReviewRepository reviewRepository;
 
     @Autowired
     private UserRepository userRepository;
@@ -33,14 +33,14 @@ public class ReviewService {
     @Autowired
     private ApplicationEventPublisher eventPublisher;
 
-    public void createRevenue(ReviewRequestDTO request) {
-        Review revenue = new Review();
-        saveRevenue(revenue, request);
+    public void createReview(ReviewRequestDTO request) {
+        Review review = new Review();
+        saveReview(review, request);
         eventPublisher.publishEvent(new ReviewCreatedEvent(request.recipeId()));
     }
 
-    public List<ReviewResponseDTO> getAllRevenues() {
-        return revenueRepository.findAll().stream()
+    public List<ReviewResponseDTO> getAllReviews() {
+        return reviewRepository.findAll().stream()
             .map(revenue -> new ReviewResponseDTO(
                 revenue.getRating(), 
                 revenue.getDescription(), 
@@ -49,8 +49,8 @@ public class ReviewService {
             )).collect(Collectors.toList());
     }
 
-    public ReviewResponseDTO getRevenueById(Long id) {
-        Review revenue = revenueRepository.findById(id)
+    public ReviewResponseDTO getReviewById(Long id) {
+        Review revenue = reviewRepository.findById(id)
                             .orElseThrow(() -> new RuntimeException("Revenue not found"));
         return new ReviewResponseDTO(
             revenue.getRating(), 
@@ -59,28 +59,28 @@ public class ReviewService {
             revenue.getRecipe().getId());
     }
 
-    public void updateRevenueById(Long id, ReviewRequestDTO request) {
-        Review revenue = revenueRepository.findById(id)
+    public void updateReviewById(Long id, ReviewRequestDTO request) {
+        Review revenue = reviewRepository.findById(id)
                             .orElseThrow(() -> new RuntimeException("Revenue not found"));
-        saveRevenue(revenue, request);
+        saveReview(revenue, request);
     }
 
-    public void deleteRevenueById(Long id) {
-        if (revenueRepository.existsById(id)) {
-            revenueRepository.deleteById(id);
+    public void deleteReviewById(Long id) {
+        if (reviewRepository.existsById(id)) {
+            reviewRepository.deleteById(id);
         } else {
             throw new RuntimeException("Revenue not found");
         }
     }
 
-    private void saveRevenue(Review revenue, ReviewRequestDTO request) {
+    private void saveReview(Review revenue, ReviewRequestDTO request) {
         revenue.setRating(request.rating());
         revenue.setDescription(request.description());
         revenue.setUser(findUser(request.userId()));
         revenue.setRecipe(findRecipe(request.recipeId()));
         revenue.setCreatedAt(LocalDateTime.now());
 
-        revenueRepository.save(revenue);
+        reviewRepository.save(revenue);
     }
 
     private User findUser(Long id) {  
