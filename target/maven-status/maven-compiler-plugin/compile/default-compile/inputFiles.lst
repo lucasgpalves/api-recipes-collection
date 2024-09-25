@@ -3,6 +3,7 @@ d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\c
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\controllers\IngredientController.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\controllers\MeasurementController.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\controllers\RecipeController.java
+d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\controllers\ReviewController.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\controllers\RoleController.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\controllers\UserController.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\RecipeVerificationResult.java
@@ -11,6 +12,7 @@ d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\c
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\requests\IngredientsRecipeRequestDTO.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\requests\MeasurementRequestDTO.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\requests\RecipeRequestDTO.java
+d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\requests\ReviewRequestDTO.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\requests\RoleRequestDTO.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\requests\UserRequestDTO.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\responses\CategoryResponseDTO.java
@@ -19,8 +21,11 @@ d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\c
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\responses\MeasurementResponseDTO.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\responses\RecipeResponseDTO.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\responses\RecipeSummariesDTO.java
+d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\responses\ReviewResponseDTO.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\responses\RoleResponseDTO.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\responses\UserResponseDTO.java
+d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\events\listeners\ReviewCreatedListener.java
+d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\events\models\ReviewCreatedEvent.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\exceptions\RecipeAlreadyExistsException.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\exceptions\RoleNotFoundException.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\models\Category.java
@@ -28,6 +33,7 @@ d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\c
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\models\IngredientsRecipe.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\models\Measurement.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\models\Recipe.java
+d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\models\Review.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\models\Role.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\models\User.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\RecipesCollectionApplication.java
@@ -36,11 +42,13 @@ d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\c
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\repositories\IngredientsRecipeRepository.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\repositories\MeasurementRepository.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\repositories\RecipeRepository.java
+d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\repositories\ReviewRepository.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\repositories\RoleRepository.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\repositories\UserRepository.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\services\CategoryService.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\services\IngredientService.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\services\MeasurementService.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\services\RecipeService.java
+d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\services\ReviewService.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\services\RoleService.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\services\UserService.java
