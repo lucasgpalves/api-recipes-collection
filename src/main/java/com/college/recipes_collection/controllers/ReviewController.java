@@ -24,35 +24,35 @@ import jakarta.validation.Valid;
 public class ReviewController {
     
     @Autowired
-    private ReviewService revenueService;
+    private ReviewService reviewService;
 
     @PostMapping
     public ResponseEntity<Void> createReview(@Valid @RequestBody ReviewRequestDTO request) {
-        revenueService.createReview(request);
+        reviewService.createReview(request);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping 
     public ResponseEntity<List<ReviewResponseDTO>> getAllRevenues() {
-        List<ReviewResponseDTO> revenues = revenueService.getAllReviews();
+        List<ReviewResponseDTO> revenues = reviewService.getAllReviews();
         return ResponseEntity.ok(revenues);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ReviewResponseDTO> getReviewById(@PathVariable Long id) {
-        ReviewResponseDTO revenue = revenueService.getReviewById(id);
+        ReviewResponseDTO revenue = reviewService.getReviewById(id);
         return ResponseEntity.ok(revenue);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateReviewById(@PathVariable Long id, @Valid @RequestBody ReviewRequestDTO request) {
-        revenueService.updateReviewById(id ,request);
+        reviewService.updateReviewById(id ,request);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteReviewById(@PathVariable Long id) {
-        revenueService.deleteReviewById(id);
+        reviewService.deleteReviewById(id);
         return ResponseEntity.noContent().build();
     }
 }
