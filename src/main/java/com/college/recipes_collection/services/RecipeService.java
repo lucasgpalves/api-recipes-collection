@@ -88,9 +88,14 @@ public class RecipeService {
     }
 
     public void updateIsRatingStatus(Long recipeId, boolean isRated) {
-        Recipe recipe = recipeRepository.findById(recipeId)
-                        .orElseThrow(() -> new RuntimeException("Recipe not found"));
+        Recipe recipe = verifyIfRecipeExists(recipeId);
         recipe.setIsRated(isRated);
+        recipeRepository.save(recipe);
+    }
+
+    public void updateIsPublishedStatus(Long recipeId, boolean isPublished) {
+        Recipe recipe = verifyIfRecipeExists(recipeId);
+        recipe.setIsPublished(isPublished);
         recipeRepository.save(recipe);
     }
 
