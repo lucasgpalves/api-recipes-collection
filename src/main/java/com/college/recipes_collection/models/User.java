@@ -10,8 +10,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -42,12 +40,13 @@ public class User {
     private Role role;
 
     @Column(nullable = false)
-    @NotNull
-    @Min(value = 0)
     private Double salary;
 
     @Column(name = "ingressed_at", updatable = false)
     private LocalDateTime ingressedAt;
+
+    @Column(name = "terminated_at")
+    private LocalDateTime terminatedAt;
 
     @Column(nullable = true, unique = true, name = "fantasy_name")
     private String fantasyName;

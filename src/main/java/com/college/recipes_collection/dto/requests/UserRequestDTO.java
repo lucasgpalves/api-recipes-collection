@@ -1,5 +1,6 @@
 package com.college.recipes_collection.dto.requests;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -14,6 +15,7 @@ public record UserRequestDTO(
     String roleName,
 
     @NotNull
+    @Min(value = 0, message = "Salary must be greater than or equal to 0")
     Double salary,
 
     String fantasyName
