@@ -64,6 +64,20 @@ public class UserService {
         userRepository.save(user);
     }
 
+    public void deleteUserById(Long id) {
+        if(userRepository.existsById(id)) {
+            boolean hasRelatedEntities = userHasRelatedEntities(id);
+
+            if (!hasRelatedEntities) {
+                userRepository.deleteById(id);
+            } else {
+                throw new RuntimeException("This user has some related entitie");
+            }
+        } else {
+            throw new RuntimeException("User not found");
+        }
+    }
+
     private User saveUser(User user, UserRequestDTO request) {
         user.setCpf(request.cpf());
         user.setName(request.name());
@@ -86,5 +100,11 @@ public class UserService {
     private User verifyIsUserExists(Long id) {
         return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    private boolean userHasRelatedEntities(Long id) {
+        return userRepository.hasRelatedRecipes(id) ||
+                userRepository.hasRelatedReviews(id) ||
+                userRepository.hasRelatedBooks(id);
     }
 }

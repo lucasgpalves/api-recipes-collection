@@ -51,9 +51,16 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> terminateUser(@PathVariable Long id) {
+    @PutMapping("/terminate/{id}")
+    public ResponseEntity<Void> terminateUserById(@PathVariable Long id) {
         userService.terminateUserById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUserById(@PathVariable Long id) {
+        userService.deleteUserById(id);
+        return ResponseEntity.noContent().build();
+    }
+    
 }

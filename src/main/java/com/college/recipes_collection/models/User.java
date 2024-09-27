@@ -1,5 +1,6 @@
 package com.college.recipes_collection.models;
 
+import java.util.List;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -9,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -50,4 +52,7 @@ public class User {
 
     @Column(nullable = true, unique = true, name = "fantasy_name")
     private String fantasyName;
+
+    @OneToMany(mappedBy = "user")
+    private List<Book> books;
 }

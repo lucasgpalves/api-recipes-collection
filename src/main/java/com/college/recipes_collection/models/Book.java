@@ -42,7 +42,7 @@ public class Book {
 
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User userId;
+    private User user;
 
     @ManyToMany
     @JoinTable(
