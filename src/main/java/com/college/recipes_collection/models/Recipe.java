@@ -55,7 +55,7 @@ public class Recipe {
     @Column(name = "preparation_time",nullable = false)
     private int preparationTime;
 
-    @Column(nullable = true)
+    @Column
     private String description;
 
     @Column(nullable = false)
@@ -66,6 +66,9 @@ public class Recipe {
 
     @OneToMany(mappedBy = "recipe", orphanRemoval = false)
     private List<IngredientsRecipe> ingredients;
+
+    @OneToMany(mappedBy = "recipe")
+    private List<Review> reviews;
 
     @ManyToMany(mappedBy = "recipes")
     private List<Book> books;
