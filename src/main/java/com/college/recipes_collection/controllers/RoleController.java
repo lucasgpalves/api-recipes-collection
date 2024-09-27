@@ -46,14 +46,14 @@ public class RoleController {
 
     //Alterar para retornar noContent
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateRole(@PathVariable int id, @RequestBody RoleRequestDTO request) {
-        roleService.updateRole(id, request);
+    public ResponseEntity<Void> updateRoleById(@PathVariable int id, @RequestBody RoleRequestDTO request) {
+        roleService.updateRoleById(id, request);
         return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRole(@PathVariable int id) {
-        roleService.deleteRole(id);
+    public ResponseEntity<Void> deleteRoleById(@PathVariable int id) {
+        roleService.deleteRoleById(id);
         return ResponseEntity.noContent().build();
     }
 }
