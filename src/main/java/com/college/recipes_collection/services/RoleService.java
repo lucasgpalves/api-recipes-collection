@@ -43,7 +43,7 @@ public class RoleService {
             .collect(Collectors.toList());
     }
 
-    public void updateRole(int id, RoleRequestDTO request) {
+    public void updateRoleById(int id, RoleRequestDTO request) {
         Role updatedRole = roleRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Role not found"));
 
@@ -52,7 +52,7 @@ public class RoleService {
         roleRepository.save(updatedRole);
     }
 
-    public void deleteRole(int id) {
+    public void deleteRoleById(int id) {
         if(roleRepository.existsById(id)) {
             roleRepository.deleteById(id);
         } else {

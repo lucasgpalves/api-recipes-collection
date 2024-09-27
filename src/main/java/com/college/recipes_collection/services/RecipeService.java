@@ -79,14 +79,6 @@ public class RecipeService {
         saveIngredientForRecipe(updatedRecipe, request.ingredientsRecipe());
     }
 
-    public void deleteRecipeById(Long id) {
-        if (recipeRepository.existsById(id)) {
-            recipeRepository.deleteById(id);
-        } else {
-            throw new RuntimeException("Recipe not found");
-        }
-    }
-
     public void updateIsRatingStatus(Long recipeId, boolean isRated) {
         Recipe recipe = verifyIfRecipeExists(recipeId);
         recipe.setIsRated(isRated);
