@@ -26,13 +26,11 @@ public class UserService {
 
     public void createUser(UserRequestDTO request) {
         User createdUser = new User();
-
         saveUser(createdUser, request);
     }
 
     public UserResponseDTO getUserById(Long id) {
-        User user = userRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("User not found"));
+        User user = verifyIsUserExists(id);
 
         return new UserResponseDTO(
             user.getCpf(), 
@@ -55,18 +53,15 @@ public class UserService {
             .collect(Collectors.toList());
     }
 
-    public void updateUser(Long id, UserRequestDTO request) {
-        User updatedUser = userRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("User not found"));
+    public void updateUserById(Long id, UserRequestDTO request) {
+        User updatedUser = verifyIsUserExists(id);
         saveUser(updatedUser, request);
     }
 
-    public void deleteUser(Long id) {
-        if(userRepository.existsById(id)) {
-            userRepository.deleteById(id);
-        } else {
-            throw new RuntimeException("User not found");
-        }
+    public void terminateUserById(Long id) {
+        User user = verifyIsUserExists(id);
+        user.setTerminatedAt(LocalDateTime.now());
+        userRepository.save(user);
     }
 
     private User saveUser(User user, UserRequestDTO request) {
@@ -86,5 +81,10 @@ public class UserService {
         }
 
         return userRepository.save(user);
+    }
+
+    private User verifyIsUserExists(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found"));
     }
 }
