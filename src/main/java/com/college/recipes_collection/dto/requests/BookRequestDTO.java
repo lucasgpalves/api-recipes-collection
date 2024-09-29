@@ -10,8 +10,8 @@ public record BookRequestDTO(
     @NotBlank
     String title,
 
-    @NotBlank
     String isbn,
+    String description,
 
     @NotEmpty
     List<Long> recipesId,
