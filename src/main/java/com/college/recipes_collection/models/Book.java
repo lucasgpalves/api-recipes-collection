@@ -40,6 +40,9 @@ public class Book {
     @Column
     private String description;
 
+    @Column(name = "is_published")
+    private boolean isPublished;
+
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;

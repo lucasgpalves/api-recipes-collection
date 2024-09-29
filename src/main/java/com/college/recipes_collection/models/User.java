@@ -50,8 +50,14 @@ public class User {
     @Column(name = "terminated_at")
     private LocalDateTime terminatedAt;
 
-    @Column(nullable = true, unique = true, name = "fantasy_name")
+    @Column(unique = true, name = "fantasy_name")
     private String fantasyName;
+
+    @OneToMany(mappedBy = "user")
+    private List<Recipe> recipes;
+
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviews;
 
     @OneToMany(mappedBy = "user")
     private List<Book> books;

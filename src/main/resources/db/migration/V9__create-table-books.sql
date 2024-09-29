@@ -3,6 +3,7 @@ CREATE TABLE books (
     title VARCHAR(40) NOT NULL,
     description VARCHAR(120),
     user_id BIGINT NOT NULL,
+    is_published BOOLEAN,
 
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
