@@ -32,6 +32,9 @@ public class BookService {
     @Autowired
     private RecipeRepository recipeRepository;
 
+    @Autowired
+    private RecipeService recipeService;
+
     public void createBook(BookRequestDTO request) {
         Book book = new Book();
 
@@ -82,11 +85,11 @@ public class BookService {
         if(book.getIsbn().isEmpty() || book.getIsbn() == null) {
             throw new BookWithoutIsbnException();
         }
-        
-        //Adicionar um lógica para marcar como publicado cada receita relacionada
 
         book.setPublished(true);
-        bookRepository.save(book);
+        Book savedBook = bookRepository.save(book);
+
+        updateBookRecipesStatusPublished(savedBook);
     }
 
     private void validateRecipeIds(List<Long> requestedIds, List<Recipe> foundRecipes) {
@@ -112,5 +115,13 @@ public class BookService {
     private User findUserById(Long id) {
         return userRepository.findById(id)
                     .orElseThrow(() -> new RuntimeException("User not found"));
+    }
+
+    private void updateBookRecipesStatusPublished(Book book) {
+        List<Recipe> recipes = book.getRecipes();
+
+        for (Recipe recipe : recipes) {
+            recipeService.updateIsPublishedStatus(recipe.getId(), true);
+        }
     }
 }
