@@ -1,6 +1,6 @@
 package com.college.recipes_collection.models;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,7 +34,7 @@ public class Goal {
     private int amount;
 
     @Column(name = "starts_at", nullable = false)
-    private LocalDateTime startsAt;
+    private LocalDate startsAt;
 
     @Column
     private String description;

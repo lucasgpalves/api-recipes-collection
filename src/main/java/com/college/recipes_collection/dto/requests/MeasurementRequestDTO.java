@@ -7,11 +7,8 @@ public record MeasurementRequestDTO(
     String name,
     String description
 ) {
-    public MeasurementRequestDTO(
-        @NotBlank String name,
-        String description
-    ) {
-        this.name = name.toUpperCase();
-        this.description = (description == null || description.isBlank()) ? "" : description;
+    public MeasurementRequestDTO {
+        name = name.toUpperCase();
+        description = (description == null || description.isBlank()) ? "" : description;
     }
 }
