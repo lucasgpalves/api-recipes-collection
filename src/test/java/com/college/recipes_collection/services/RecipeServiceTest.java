@@ -64,7 +64,6 @@ class RecipeServiceTest {
                 new IngredientsRecipeRequestDTO(250.00, 
                 "Sugar", 
                 "g")
-                // Você pode adicionar mais ingredientes aqui, se necessário
             ),
             "Description"
         );
