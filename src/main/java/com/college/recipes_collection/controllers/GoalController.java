@@ -1,5 +1,6 @@
 package com.college.recipes_collection.controllers;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.college.recipes_collection.dto.requests.GoalRequestDTO;
+import com.college.recipes_collection.dto.responses.GoalProgressResponse;
 import com.college.recipes_collection.dto.responses.GoalResponseDTO;
 import com.college.recipes_collection.services.GoalService;
 
@@ -43,6 +46,20 @@ public class GoalController {
         return ResponseEntity.ok(goal);
     }
 
+    @GetMapping("/{goalId}/progress")
+    public ResponseEntity<GoalProgressResponse> getGoalProgress(
+        @PathVariable Long goalId,
+        @RequestParam Long userId,
+        @RequestParam(required = false) Integer month,
+        @RequestParam(required = false) Integer year
+    ) {
+        int currentMonth = (month == null) ? LocalDateTime.now().getMonthValue() : month;
+        int currentYear = (year == null) ? LocalDateTime.now().getYear() : year;
+        GoalProgressResponse goal = goalService.getGoalProgress(goalId, userId, currentMonth, currentYear);
+
+        return ResponseEntity.ok(goal);
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateGoalById(@PathVariable Long id, @RequestBody GoalRequestDTO request) {
         goalService.updateGoalById(id, request);
@@ -54,6 +71,4 @@ public class GoalController {
         goalService.deleteGoalById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-    
-    
 }

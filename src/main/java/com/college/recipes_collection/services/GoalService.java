@@ -8,8 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.college.recipes_collection.dto.requests.GoalRequestDTO;
+import com.college.recipes_collection.dto.responses.GoalProgressResponse;
 import com.college.recipes_collection.dto.responses.GoalResponseDTO;
+import com.college.recipes_collection.dto.responses.RoleResponseDTO;
 import com.college.recipes_collection.models.Goal;
+import com.college.recipes_collection.models.Recipe;
 import com.college.recipes_collection.models.Role;
 import com.college.recipes_collection.repositories.GoalRepository;
 import com.college.recipes_collection.repositories.RoleRepository;
@@ -22,6 +25,9 @@ public class GoalService {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private RecipeService recipeService;
 
     public void createGoal(GoalRequestDTO request) {
         Goal goal = new Goal();
@@ -36,7 +42,9 @@ public class GoalService {
                 goal.getAmount(), 
                 goal.getDescription(), 
                 goal.getStartsAt(), 
-                goal.getRole()
+                new RoleResponseDTO(
+                    goal.getRole().getId(), 
+                    goal.getRole().getName())
             )).collect(Collectors.toList());
     }
 
@@ -49,7 +57,9 @@ public class GoalService {
             goal.getAmount(), 
             goal.getDescription(), 
             goal.getStartsAt(), 
-            goal.getRole()
+            new RoleResponseDTO(
+                goal.getRole().getId(), 
+                goal.getRole().getName())
         );
     }
 
@@ -64,6 +74,19 @@ public class GoalService {
         } else {
             throw new RuntimeException("Goal not found");
         }
+    }
+
+    public GoalProgressResponse getGoalProgress(Long goalId, Long userId, int month, int year) {
+        Goal goal = findById(goalId);
+        int target = goal.getAmount();
+        
+        int completed = countRecipesByUserAndMonth(userId, month, year);
+
+        return new GoalProgressResponse(
+            userId, 
+            target, 
+            completed
+        );
     }
 
     private void saveGoal(Goal goal, GoalRequestDTO request) {
@@ -87,5 +110,10 @@ public class GoalService {
     private Goal findById(Long id) {
         return goalRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Goal not found"));
+    }
+
+    private int countRecipesByUserAndMonth(Long id, int month, int year) {
+        List<Recipe> recipes = recipeService.findRecipesByUserAndMonth(id, month, year);
+        return recipes.size();
     }
 }
