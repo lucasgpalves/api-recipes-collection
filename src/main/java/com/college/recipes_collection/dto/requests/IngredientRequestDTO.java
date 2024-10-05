@@ -8,12 +8,8 @@ public record IngredientRequestDTO(
 
     String description
 ) {
-    public IngredientRequestDTO(
-        @NotBlank String name,
-        String description
-    ) {
-        this.name = name;
+    public IngredientRequestDTO{
         //Mudar o valor atribuido para "" e não null
-        this.description = (description == null || description.isBlank()) ? "" : description;
+        description = (description == null || description.isBlank()) ? "" : description;
     }
 }

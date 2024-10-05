@@ -192,4 +192,8 @@ public class RecipeService {
         return recipeRepository.findById(id)
             .orElseThrow(() -> new RuntimeException("Recipe not found"));
     }
+
+    protected List<Recipe> findRecipesByUserAndMonth(Long id, int month, int year) {
+        return recipeRepository.findRecipesByUserAndMonth(id, month, year);
+    }
 }

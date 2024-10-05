@@ -29,23 +29,7 @@ public record RecipeRequestDTO(
 
     String description
 ) {
-    public RecipeRequestDTO(
-        @NotNull Long userId,
-        @NotBlank String name,
-        @NotBlank String categoryName,
-        @NotBlank String preparationMethod,
-        @NotNull Double portions,
-        @NotNull int preparationTime,
-        @NotNull List<IngredientsRecipeRequestDTO> ingredientsRecipe,
-        String description
-    ) {
-        this.userId = userId;
-        this.name = name;
-        this.categoryName = categoryName;
-        this.preparationMethod = preparationMethod;
-        this.portions = portions;
-        this.preparationTime = preparationTime;
-        this.ingredientsRecipe = ingredientsRecipe;
-        this.description = (description == null || description.isBlank()) ? "" : description;
+    public RecipeRequestDTO {
+        description = (description == null || description.isBlank()) ? "" : description;
     }
 }

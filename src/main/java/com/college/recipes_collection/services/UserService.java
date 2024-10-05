@@ -87,7 +87,7 @@ public class UserService {
             user.setIngressedAt(LocalDateTime.now());
         }
 
-        Role role = roleRepository.findByName(request.roleName());
+        Role role = findByName(request.roleName());
         if(role == null){
             throw new RoleNotFoundException("Role not found: " + request.roleName());
         } else {
@@ -106,5 +106,10 @@ public class UserService {
         return userRepository.hasRelatedRecipes(id) ||
                 userRepository.hasRelatedReviews(id) ||
                 userRepository.hasRelatedBooks(id);
+    }
+
+    private Role findByName(String name) {
+        return roleRepository.findByName(name)
+                .orElseThrow(() -> new RuntimeException("Role not found"));
     }
 }
