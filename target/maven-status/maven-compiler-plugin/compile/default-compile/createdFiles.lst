@@ -19,6 +19,7 @@ com\college\recipes_collection\repositories\CategoryRepository.class
 com\college\recipes_collection\services\RecipeService.class
 com\college\recipes_collection\dto\responses\GoalResponseDTO.class
 com\college\recipes_collection\models\IngredientsRecipe.class
+com\college\recipes_collection\dto\responses\GoalProgressResponse.class
 com\college\recipes_collection\dto\responses\ReviewResponseDTO.class
 com\college\recipes_collection\repositories\RoleRepository.class
 com\college\recipes_collection\services\CategoryService.class
