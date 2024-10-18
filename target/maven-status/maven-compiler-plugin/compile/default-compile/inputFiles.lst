@@ -22,6 +22,7 @@ d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\c
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\requests\UserRequestDTO.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\responses\BookResponseDTO.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\responses\CategoryResponseDTO.java
+d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\responses\GoalProgressResponse.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\responses\GoalResponseDTO.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\responses\IngredientResponseDTO.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\dto\responses\IngredientsRecipeResponseDTO.java
