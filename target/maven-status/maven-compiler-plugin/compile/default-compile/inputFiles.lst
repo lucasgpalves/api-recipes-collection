@@ -1,4 +1,5 @@
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\config\OpenApiConfig.java
+d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\config\SecurityConfig.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\controllers\BookController.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\controllers\CategoryController.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\controllers\GoalController.java
@@ -50,6 +51,7 @@ d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\c
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\models\Review.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\models\Role.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\models\User.java
+d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\models\UserAuthentication.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\RecipesCollectionApplication.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\repositories\BookRepository.java
 d:\alvez\Documents\recipes-collection\backend-recipes-collection\src\main\java\com\college\recipes_collection\repositories\CategoryRepository.java

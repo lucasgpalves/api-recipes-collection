@@ -64,6 +64,7 @@ com\college\recipes_collection\dto\requests\CategoryRequestDTO.class
 com\college\recipes_collection\controllers\GoalController.class
 com\college\recipes_collection\dto\responses\CategoryResponseDTO.class
 com\college\recipes_collection\dto\responses\IngredientResponseDTO.class
+com\college\recipes_collection\config\SecurityConfig.class
 com\college\recipes_collection\repositories\RecipeRepository.class
 com\college\recipes_collection\dto\responses\UserResponseDTO.class
 com\college\recipes_collection\repositories\ReviewRepository.class
