@@ -108,3 +108,130 @@ Instruções para quem quiser contribuir para o projeto:
 ## Licença
 
 Este projeto está licenciado sob a [Licença MIT](LICENSE).
+
+src
+├── main
+│   ├── java
+│   │   └── com
+│   │       └── college
+│   │           └── recipes_collection
+│   │               ├── RecipesCollectionApplication.java
+│   │               ├── config
+│   │               │   ├── OpenApiConfig.java
+│   │               │   └── SecurityConfig.java
+│   │               ├── controllers
+│   │               │   ├── AuthController.java
+│   │               │   ├── BookController.java
+│   │               │   ├── CategoryController.java
+│   │               │   ├── GoalController.java
+│   │               │   ├── IngredientController.java
+│   │               │   ├── MeasurementController.java
+│   │               │   ├── RecipeController.java
+│   │               │   ├── ReviewController.java
+│   │               │   ├── RoleController.java
+│   │               │   └── UserController.java
+│   │               ├── dto
+│   │               │   ├── RecipeNameDTO.java
+│   │               │   ├── RecipeVerificationResult.java
+│   │               │   ├── requests
+│   │               │   │   ├── AuthRequestDTO.java
+│   │               │   │   ├── BookRequestDTO.java
+│   │               │   │   ├── CategoryRequestDTO.java
+│   │               │   │   ├── GoalRequestDTO.java
+│   │               │   │   ├── IngredientRequestDTO.java
+│   │               │   │   ├── IngredientsRecipeRequestDTO.java
+│   │               │   │   ├── MeasurementRequestDTO.java
+│   │               │   │   ├── RecipeRequestDTO.java
+│   │               │   │   ├── RegisterRequestDTO.java
+│   │               │   │   ├── ReviewRequestDTO.java
+│   │               │   │   ├── RoleRequestDTO.java
+│   │               │   │   └── UserRequestDTO.java
+│   │               │   └── responses
+│   │               │       ├── BookResponseDTO.java
+│   │               │       ├── CategoryResponseDTO.java
+│   │               │       ├── GoalProgressResponse.java
+│   │               │       ├── GoalResponseDTO.java
+│   │               │       ├── IngredientResponseDTO.java
+│   │               │       ├── IngredientsRecipeResponseDTO.java
+│   │               │       ├── MeasurementResponseDTO.java
+│   │               │       ├── RecipeResponseDTO.java
+│   │               │       ├── RecipeSummariesDTO.java
+│   │               │       ├── ReviewResponseDTO.java
+│   │               │       ├── RoleResponseDTO.java
+│   │               │       ├── TokenResponseDTO.java
+│   │               │       └── UserResponseDTO.java
+│   │               ├── events
+│   │               │   ├── listeners
+│   │               │   │   ├── BookCreatedListener.java
+│   │               │   │   └── ReviewCreatedListener.java
+│   │               │   └── models
+│   │               │       ├── BookCreatedEvent.java
+│   │               │       └── ReviewCreatedEvent.java
+│   │               ├── exceptions
+│   │               │   ├── BookWithoutIsbnException.java
+│   │               │   ├── RecipeAlreadyExistsException.java
+│   │               │   ├── RecipeInvalidIdsException.java
+│   │               │   └── RoleNotFoundException.java
+│   │               ├── models
+│   │               │   ├── Book.java
+│   │               │   ├── Category.java
+│   │               │   ├── Goal.java
+│   │               │   ├── Ingredient.java
+│   │               │   ├── IngredientsRecipe.java
+│   │               │   ├── Measurement.java
+│   │               │   ├── Recipe.java
+│   │               │   ├── Review.java
+│   │               │   ├── Role.java
+│   │               │   ├── User.java
+│   │               │   └── UserAuthentication.java
+│   │               ├── repositories
+│   │               │   ├── BookRepository.java
+│   │               │   ├── CategoryRepository.java
+│   │               │   ├── GoalRepository.java
+│   │               │   ├── IngredientRepository.java
+│   │               │   ├── IngredientsRecipeRepository.java
+│   │               │   ├── MeasurementRepository.java
+│   │               │   ├── RecipeRepository.java
+│   │               │   ├── ReviewRepository.java
+│   │               │   ├── RoleRepository.java
+│   │               │   ├── UserAuthenticationRepository.java
+│   │               │   └── UserRepository.java
+│   │               └── services
+│   │                   ├── AuthenticationService.java
+│   │                   ├── AuthorizationService.java
+│   │                   ├── BookService.java
+│   │                   ├── CategoryService.java
+│   │                   ├── GoalService.java
+│   │                   ├── IngredientService.java
+│   │                   ├── MeasurementService.java
+│   │                   ├── RecipeService.java
+│   │                   ├── ReviewService.java
+│   │                   ├── RoleService.java
+│   │                   ├── TokenService.java
+│   │                   └── UserService.java
+│   └── resources
+│       ├── application.properties
+│       ├── db
+│       │   └── migration
+│       │       ├── V10__create-table-publications.sql
+│       │       ├── V11__create-table-goals.sql
+│       │       ├── V12__create-table-user-authentication.sql
+│       │       ├── V13__insert-user.sql
+│       │       ├── V1__create-table-roles.sql
+│       │       ├── V2__create-table-users.sql
+│       │       ├── V3__create-table-categories.sql
+│       │       ├── V4__create-table-ingredients.sql
+│       │       ├── V5__create-table-recipes.sql
+│       │       ├── V6__create-table-measurements.sql
+│       │       ├── V7__create-table-ingredients-recipe.sql
+│       │       ├── V8__create-table-reviews.sql
+│       │       └── V9__create-table-books.sql
+│       └── static
+└── test
+    └── java
+        └── com
+            └── college
+                └── recipes_collection
+                    ├── RecipesCollectionApplicationTests.java
+                    └── services
+                        └── RecipeServiceTest.java
