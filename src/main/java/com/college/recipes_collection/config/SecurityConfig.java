@@ -25,10 +25,6 @@ public class SecurityConfig {
         return http 
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests( authorize -> authorize
-                /* AUTH */
-                .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                
                 /* BOOK */
                 .requestMatchers(HttpMethod.POST, "/books").hasRole("EDITOR")
                 .requestMatchers(HttpMethod.GET, "/books/**").permitAll()
