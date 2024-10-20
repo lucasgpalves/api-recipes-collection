@@ -1,5 +1,7 @@
 package com.college.recipes_collection.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -39,7 +41,8 @@ public class AuthenticationService {
     }
 
     public boolean register(RegisterRequestDTO request) {
-        if (userAuthenticationRepository.findByUsername(request.username()) != null) return false;
+        Optional<UserAuthentication> userAuthExisting = findByUsername(request.username());
+        if (userAuthExisting.isPresent()) return false;
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(request.password());
 
@@ -48,6 +51,8 @@ public class AuthenticationService {
         UserAuthentication userAuth = new UserAuthentication(request.username(), encryptedPassword, user);
 
         userAuthenticationRepository.save(userAuth);
+
+        System.out.println("USER CREATED = " + userAuth);
         return true;
     }
 
@@ -55,4 +60,7 @@ public class AuthenticationService {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
     }
 
+    private Optional<UserAuthentication> findByUsername(String username) {
+        return userAuthenticationRepository.findByUsername(username);
+    }
 }
