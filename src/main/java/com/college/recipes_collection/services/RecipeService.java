@@ -20,7 +20,7 @@ import com.college.recipes_collection.models.Recipe;
 import com.college.recipes_collection.models.User;
 import com.college.recipes_collection.repositories.CategoryRepository;
 import com.college.recipes_collection.repositories.IngredientRepository;
-import com.college.recipes_collection.repositories.IngredientsRecipeRepository;
+import com.college.recipes_collection.repositories.RecipeIngredientsRepository;
 import com.college.recipes_collection.repositories.MeasurementRepository;
 import com.college.recipes_collection.repositories.RecipeRepository;
 import com.college.recipes_collection.repositories.UserRepository;
@@ -46,7 +46,7 @@ public class RecipeService {
     private MeasurementRepository measurementRepository;
     
     @Autowired
-    private IngredientsRecipeRepository ingredientsRecipeRepository;
+    private RecipeIngredientsRepository ingredientsRecipeRepository;
 
     public void createRecipe(RecipeRequestDTO request) {
         RecipeVerificationResult result = checkIfSameRecipeExistsForUser(request.userId(), request.name());
