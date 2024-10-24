@@ -30,5 +30,5 @@ public class Restaurant {
     private String name;
 
     @OneToMany(mappedBy = "restaurant")
-    private List<References> references;
+    private List<JobReference> jobReferences;
 }

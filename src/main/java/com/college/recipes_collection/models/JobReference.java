@@ -21,7 +21,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class References {
+public class JobReference {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

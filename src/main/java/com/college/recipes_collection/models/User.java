@@ -63,5 +63,5 @@ public class User {
     private List<Book> books;
 
     @OneToMany(mappedBy = "user")
-    private List<References> references;
+    private List<JobReference> jobReferences;
 }
