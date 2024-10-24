@@ -51,8 +51,6 @@ public class AuthenticationService {
         UserAuthentication userAuth = new UserAuthentication(request.username(), encryptedPassword, user);
 
         userAuthenticationRepository.save(userAuth);
-
-        System.out.println("USER CREATED = " + userAuth);
         return true;
     }
 
