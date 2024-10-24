@@ -8,13 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.college.recipes_collection.dto.RecipeVerificationResult;
-import com.college.recipes_collection.dto.responses.IngredientsRecipeResponseDTO;
+import com.college.recipes_collection.dto.responses.RecipeIngredientsResponseDTO;
 import com.college.recipes_collection.dto.responses.RecipeResponseDTO;
 import com.college.recipes_collection.dto.responses.RecipeSummariesDTO;
 import com.college.recipes_collection.exceptions.RecipeAlreadyExistsException;
 import com.college.recipes_collection.models.Category;
 import com.college.recipes_collection.models.Ingredient;
-import com.college.recipes_collection.models.IngredientsRecipe;
+import com.college.recipes_collection.models.RecipeIngredients;
 import com.college.recipes_collection.models.Measurement;
 import com.college.recipes_collection.models.Recipe;
 import com.college.recipes_collection.models.User;
@@ -24,7 +24,7 @@ import com.college.recipes_collection.repositories.IngredientsRecipeRepository;
 import com.college.recipes_collection.repositories.MeasurementRepository;
 import com.college.recipes_collection.repositories.RecipeRepository;
 import com.college.recipes_collection.repositories.UserRepository;
-import com.college.recipes_collection.dto.requests.IngredientsRecipeRequestDTO;
+import com.college.recipes_collection.dto.requests.RecipeIngredientsRequestDTO;
 import com.college.recipes_collection.dto.requests.RecipeRequestDTO;
 
 @Service
@@ -110,9 +110,9 @@ public class RecipeService {
         return recipeRepository.save(recipe);
     }
     
-    private void saveIngredientForRecipe(Recipe recipe, List<IngredientsRecipeRequestDTO> ingredientsRequestDto) {
-        for (IngredientsRecipeRequestDTO ingredientRequest : ingredientsRequestDto) {
-            IngredientsRecipe ingredientsRecipe = new IngredientsRecipe();
+    private void saveIngredientForRecipe(Recipe recipe, List<RecipeIngredientsRequestDTO> ingredientsRequestDto) {
+        for (RecipeIngredientsRequestDTO ingredientRequest : ingredientsRequestDto) {
+            RecipeIngredients ingredientsRecipe = new RecipeIngredients();
             ingredientsRecipe.setRecipe(recipe);
 
             ingredientsRecipe.setAmount(ingredientRequest.amount());
@@ -128,8 +128,8 @@ public class RecipeService {
     }
 
     private RecipeResponseDTO mapToRecipeResponseDTO(Recipe recipe) {
-        List<IngredientsRecipeResponseDTO> ingredientsDtos = recipe.getIngredients().stream()
-            .map(this::mapToIngredientsRecipeResponseDto)
+        List<RecipeIngredientsResponseDTO> ingredientsDtos = recipe.getIngredients().stream()
+            .map(this::mapToRecipeIngredientsResponseDto)
             .toList(); 
 
         return new RecipeResponseDTO(
@@ -147,8 +147,8 @@ public class RecipeService {
         );
     }
 
-    private IngredientsRecipeResponseDTO mapToIngredientsRecipeResponseDto(IngredientsRecipe ingredientsRecipe) {
-        return new IngredientsRecipeResponseDTO(
+    private RecipeIngredientsResponseDTO mapToRecipeIngredientsResponseDto(RecipeIngredients ingredientsRecipe) {
+        return new RecipeIngredientsResponseDTO(
             ingredientsRecipe.getAmount(), 
             ingredientsRecipe.getIngredient().getName(), 
             ingredientsRecipe.getMeasurement().getName()

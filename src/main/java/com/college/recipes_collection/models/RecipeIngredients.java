@@ -21,7 +21,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class IngredientsRecipe {
+public class RecipeIngredients {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

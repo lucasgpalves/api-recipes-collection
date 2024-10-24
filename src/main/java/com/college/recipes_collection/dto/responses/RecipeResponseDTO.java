@@ -11,7 +11,7 @@ public record RecipeResponseDTO(
     LocalDateTime createdAt,
     String preparationMethod,
     Double portions,
-    List<IngredientsRecipeResponseDTO> ingredients,
+    List<RecipeIngredientsResponseDTO> ingredients,
     String description,
     Boolean isPublished,
     Boolean isRated
