@@ -79,7 +79,19 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.POST, "/users").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.GET, "/users/**").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/users/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")     
+                .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")    
+                
+                /* RESTAURANT */
+                .requestMatchers(HttpMethod.POST, "/restaurants").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/restaurants/**").permitAll()
+                .requestMatchers(HttpMethod.PUT, "/restaurants/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/restaurants/**").hasRole("ADMIN")  
+
+                /* JOBREFERENCES */
+                .requestMatchers(HttpMethod.POST, "/references").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/references/**").permitAll()
+                .requestMatchers(HttpMethod.PUT, "/references/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/references/**").hasRole("ADMIN")  
                 
                 .anyRequest().authenticated()
             )
