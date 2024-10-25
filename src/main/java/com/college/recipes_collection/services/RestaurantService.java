@@ -38,7 +38,7 @@ public class RestaurantService {
         return new RestaurantResponseDTO(restaurant.getName());
     }
 
-    public void updateRestaurantById(RestaurantResponseDTO request, Long id) {
+    public void updateRestaurantById(RestaurantRequestDTO request, Long id) {
         Restaurant restaurant = findById(id);
 
         restaurant.setName(request.name());
