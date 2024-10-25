@@ -48,7 +48,7 @@ public class AuthenticationService {
 
         User user = findById(request.userId());
 
-        UserAuthentication userAuth = new UserAuthentication(request.username(), encryptedPassword, user);
+        UserAuthentication userAuth = new UserAuthentication(request.username(), encryptedPassword,         true, user);
 
         userAuthenticationRepository.save(userAuth);
         return true;
