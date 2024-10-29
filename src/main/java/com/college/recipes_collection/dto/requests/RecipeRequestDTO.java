@@ -25,7 +25,7 @@ public record RecipeRequestDTO(
     int preparationTime,
 
     @NotNull
-    List<IngredientsRecipeRequestDTO> ingredientsRecipe,
+    List<RecipeIngredientsRequestDTO> ingredientsRecipe,
 
     String description
 ) {

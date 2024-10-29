@@ -7,7 +7,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.college.recipes_collection.dto.requests.IngredientsRecipeRequestDTO;
+import com.college.recipes_collection.dto.requests.RecipeIngredientsRequestDTO;
 import com.college.recipes_collection.dto.requests.RecipeRequestDTO;
 import com.college.recipes_collection.exceptions.RecipeAlreadyExistsException;
 import com.college.recipes_collection.models.Category;
@@ -61,7 +61,7 @@ class RecipeServiceTest {
             4.0,
             60,
             List.of(
-                new IngredientsRecipeRequestDTO(250.00, 
+                new RecipeIngredientsRequestDTO(250.00, 
                 "Sugar", 
                 "g")
             ),

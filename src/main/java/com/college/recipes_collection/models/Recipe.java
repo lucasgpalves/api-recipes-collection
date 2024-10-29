@@ -65,7 +65,7 @@ public class Recipe {
     private Boolean isRated;
 
     @OneToMany(mappedBy = "recipe", orphanRemoval = false)
-    private List<IngredientsRecipe> ingredients;
+    private List<RecipeIngredients> ingredients;
 
     @OneToMany(mappedBy = "recipe")
     private List<Review> reviews;

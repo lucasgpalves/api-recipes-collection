@@ -61,4 +61,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Book> books;
+
+    @OneToMany(mappedBy = "user")
+    private List<JobReference> jobReferences;
 }

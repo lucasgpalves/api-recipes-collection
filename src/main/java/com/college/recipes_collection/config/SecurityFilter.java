@@ -30,12 +30,8 @@ public class SecurityFilter extends OncePerRequestFilter{
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String token = recoverToken(request);
 
-        System.out.println("TOKEN = " + token);
-
         if (token != null) {
             String login = tokenService.validateToken(token);
-
-            System.out.println("LOGIN = " + login);
 
             UserDetails user = findByUsername(login);
             System.out.println(user.getUsername() + " " + user.getAuthorities());

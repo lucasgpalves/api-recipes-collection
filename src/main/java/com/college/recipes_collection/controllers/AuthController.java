@@ -28,7 +28,6 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<Void> register(@RequestBody RegisterRequestDTO request) {
-        System.out.println("REQUEST = " + request);
         if (authenticationService.register(request)) {
             return ResponseEntity.status(HttpStatus.CREATED).build();
         } else {

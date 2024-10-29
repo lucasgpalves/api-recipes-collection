@@ -1,5 +1,7 @@
 package com.college.recipes_collection.models;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,36 +11,35 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "ingredients_recipe")
+@Table
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode
-public class IngredientsRecipe {
-    
+public class JobReference {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @Column(name = "starts_at", nullable = false)
+    private LocalDate startsAt;
 
-    @Column(nullable = false)
-    private Double amount;
+    @Column(name = "ends_at", nullable = false)
+    private LocalDate endsAt;
 
-    @ManyToOne
-    @JoinColumn(name = "recipe_id", referencedColumnName = "id")
-    private Recipe recipe;
-
-    @ManyToOne
-    @JoinColumn(name = "ingredient_id", referencedColumnName = "id", nullable = false)
-    private Ingredient ingredient;
+    @Column(name = "contact_number")
+    private String contactNumber;
 
     @ManyToOne
-    @JoinColumn(name = "measurement_id", referencedColumnName = "id", nullable = false)
-    private Measurement measurement;
+    @JoinColumn(name = "restaurant_id", referencedColumnName = "id")
+    private Restaurant restaurant;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 }

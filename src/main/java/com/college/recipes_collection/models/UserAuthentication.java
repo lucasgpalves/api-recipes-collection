@@ -34,6 +34,9 @@ public class UserAuthentication implements UserDetails{
     @Column(nullable = false)
     private String password;
 
+    @Column(name = "is_active", nullable = false)
+    private boolean isActive;
+
     @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
