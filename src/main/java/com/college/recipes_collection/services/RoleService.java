@@ -22,7 +22,6 @@ public class RoleService {
         role.setName(request.name());
         roleRepository.save(role);
     }
-    
 
     public RoleResponseDTO getRoleById(int id) {
         Role role = roleRepository.findById(id)
