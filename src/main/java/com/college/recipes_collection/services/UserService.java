@@ -37,6 +37,8 @@ public class UserService {
             user.getName(), 
             user.getRole() == null ? null : user.getRole().getName(), 
             user.getSalary(), 
+            user.getIngressedAt(),
+            (user.getTerminatedAt() == null ? null : user.getTerminatedAt()),
             user.getFantasyName()
         );
     }
@@ -48,6 +50,8 @@ public class UserService {
                 user.getName(), 
                 user.getRole() == null ? null : user.getRole().getName(), 
                 user.getSalary(), 
+                user.getIngressedAt(),
+                (user.getTerminatedAt() == null ? null : user.getTerminatedAt()),
                 user.getFantasyName()
             ))
             .collect(Collectors.toList());
@@ -65,16 +69,13 @@ public class UserService {
     }
 
     public void deleteUserById(Long id) {
-        if(userRepository.existsById(id)) {
-            boolean hasRelatedEntities = userHasRelatedEntities(id);
+        //Se o usuario nao existir ele retorna um erro
+        if (!userRepository.existsById(id)) throw new RuntimeException("User not found");
 
-            if (!hasRelatedEntities) {
-                userRepository.deleteById(id);
-            } else {
-                throw new RuntimeException("This user has some related entitie");
-            }
+        if (!userHasRelatedEntities(id)) {
+            userRepository.deleteById(id);
         } else {
-            throw new RuntimeException("User not found");
+            terminateUserById(id);
         }
     }
 
