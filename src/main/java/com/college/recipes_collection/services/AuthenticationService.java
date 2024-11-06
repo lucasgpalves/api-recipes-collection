@@ -47,8 +47,10 @@ public class AuthenticationService {
         String encryptedPassword = new BCryptPasswordEncoder().encode(request.password());
 
         User user = findById(request.userId());
+        UserAuthentication aux = userAuthenticationRepository.findByUsername(request.username())
+                                    .orElseThrow(() -> new RuntimeException());
 
-        UserAuthentication userAuth = new UserAuthentication(request.username(), encryptedPassword,         true, user);
+        UserAuthentication userAuth = new UserAuthentication(aux.getId(), request.username(), encryptedPassword, true, user);
 
         userAuthenticationRepository.save(userAuth);
         return true;

@@ -1,5 +1,0 @@
-CREATE TABLE measurements(
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(80) NOT NULL,
-    description VARCHAR(255) NOT NULL
-);
