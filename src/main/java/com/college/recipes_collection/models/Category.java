@@ -27,4 +27,6 @@ public class Category {
 
     @Column(nullable = false, unique = true)
     private String name;
+
+    private String description;
 }

@@ -43,8 +43,8 @@ public class GoalService {
                 goal.getDescription(), 
                 goal.getStartsAt(), 
                 new RoleResponseDTO(
-                    goal.getRole().getId(), 
-                    goal.getRole().getName())
+                    goal.getRole().getName(),
+                    goal.getRole().getDescription())
             )).collect(Collectors.toList());
     }
 
@@ -58,8 +58,8 @@ public class GoalService {
             goal.getDescription(), 
             goal.getStartsAt(), 
             new RoleResponseDTO(
-                goal.getRole().getId(), 
-                goal.getRole().getName())
+                goal.getRole().getName(),
+                goal.getRole().getDescription())
         );
     }
 

@@ -20,6 +20,7 @@ public class CategoryService {
     public void createCategory(CategoryRequestDTO request) {
         Category category = new Category();
         category.setName(request.name());
+        category.setDescription(request.description());
         categoryRepository.save(category);
     }
 
@@ -29,7 +30,8 @@ public class CategoryService {
 
         return new CategoryResponseDTO(
             category.getId(), 
-            category.getName()
+            category.getName(),
+            category.getDescription()
         );
     }
 
@@ -37,7 +39,8 @@ public class CategoryService {
         return categoryRepository.findAll().stream()
             .map(category -> new CategoryResponseDTO(
                 category.getId(), 
-                category.getName()
+                category.getName(),
+                category.getDescription()
             ))
             .collect(Collectors.toList());
     }
@@ -47,6 +50,7 @@ public class CategoryService {
             .orElseThrow(() -> new RuntimeException("Category not found"));
 
         updatedCategory.setName(request.name());
+        updatedCategory.setDescription(request.description());
         categoryRepository.save(updatedCategory);
     }
 

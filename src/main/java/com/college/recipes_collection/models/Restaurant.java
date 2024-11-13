@@ -29,6 +29,20 @@ public class Restaurant {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private String city;
+
+    @Column(nullable = false)
+    private String restaurantType;
+
+    private String cnpj;
+
+    @Column(nullable = false)
+    private Category category;
+
+    @Column(nullable = false)
+    private String address;
+
     @OneToMany(mappedBy = "restaurant")
     private List<JobReference> jobReferences;
 }

@@ -20,6 +20,7 @@ public class RoleService {
     public void createRole(RoleRequestDTO request) {
         Role role = new Role();
         role.setName(request.name());
+        role.setDescription(request.description());
         roleRepository.save(role);
     }
 
@@ -28,16 +29,16 @@ public class RoleService {
             .orElseThrow(() -> new RuntimeException("Role not found"));
         
         return new RoleResponseDTO(
-            role.getId(),
-            role.getName()
+            role.getName(),
+            role.getDescription()
         );
     }
 
     public List<RoleResponseDTO> getAllRoles() {
         return roleRepository.findAll().stream()
             .map(role -> new RoleResponseDTO(
-                role.getId(), 
-                role.getName()
+                role.getName(),
+                role.getDescription()
             ))
             .collect(Collectors.toList());
     }
@@ -47,6 +48,7 @@ public class RoleService {
             .orElseThrow(() -> new RuntimeException("Role not found"));
 
         updatedRole.setName(request.name());
+        updatedRole.setDescription(request.description());
 
         roleRepository.save(updatedRole);
     }

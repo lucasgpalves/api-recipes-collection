@@ -52,4 +52,36 @@ public class UserAuthentication implements UserDetails{
         authorities.add(new SimpleGrantedAuthority("ROLE_" + this.user.getRole().getName()));
         return authorities;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setIsActive(boolean active) {
+        this.isActive = active;
+    }
+
+    public boolean getIsActive() {
+        return this.isActive;
+    }
 }
