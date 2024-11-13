@@ -18,20 +18,14 @@ public record UserRequestDTO(
     @Min(value = 0, message = "Salary must be greater than or equal to 0")
     Double salary,
 
-    String fantasyName
+    String fantasyName,
+
+    String restaurantName
 ) {
-    public UserRequestDTO(
-        @NotNull @NotBlank String cpf,
-        @NotNull @NotBlank String name,
-        @NotNull @NotBlank String roleName,
-        @NotNull Double salary,
-        String fantasyName
-    ) {
-        this.cpf = cpf;
-        this.name = name;
-        this.roleName = roleName.toUpperCase();
-        this.salary = salary;
-        this.fantasyName = (fantasyName == null || fantasyName.isBlank()) ? "" : fantasyName;
+    public UserRequestDTO {
+        roleName = roleName.toUpperCase();
+        fantasyName = (fantasyName == null || fantasyName.isBlank()) ? "" : fantasyName;
+        restaurantName = (restaurantName == null || restaurantName.isBlank()) ? null : restaurantName;
     }
     
 }

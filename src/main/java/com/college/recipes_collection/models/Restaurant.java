@@ -35,6 +35,7 @@ public class Restaurant {
     @Column(nullable = false)
     private String restaurantType;
 
+    @Column
     private String cnpj;
 
     @Column(nullable = false)
